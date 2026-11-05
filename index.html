@@ -7,7 +7,7 @@
 <meta name="description" content="Made2Fade Barbershop in Stafford, VA. Clean fades, sharp lineups, beard grooming and scalp micropigmentation by Master Barber Tony Fuller.">
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:title" content="Made2Fade Barbershop">
-<meta property="og:description" content="Precision, professionalism and consistency. Book with Tony Fuller in Stafford, VA.">
+<meta property="og:description" content="Precision, professionalism and consistency. Book with Tony Fuller and the Made2Fade team in Stafford, VA.">
 <meta property="og:image" content="/assets/logo.jpg">
 <link rel="icon" href="/assets/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="navLinks">
-      <a href="#about">Barbers</a>
+      <a href="#team">Barbers</a>
       <a href="#services">Services</a>
       <a href="#cuts">The Cuts</a>
       <a href="#reviews">Reviews</a>
@@ -52,7 +52,7 @@
     <div class="hero-meta">
       <span><i class="status-dot" id="statusDot"></i><b id="statusText">Mon–Fri 8–6 · Sat 7–4</b></span>
       <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>60 Susa Dr., Suite 111</span>
-      <a href="#reviews"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span data-rating>5.0</span> &middot; <span data-review-count>234</span> reviews</span></a>
+      <a href="#reviews"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span data-team-rating>5.0</span> &middot; <span data-team-count>500+</span> reviews</span></a>
     </div>
   </div>
 </section>
@@ -69,13 +69,13 @@
     <div class="portrait reveal">
       <img src="/assets/tony.jpg" alt="Tony Fuller, Master Barber at Made2Fade">
       <div class="badge">
-        <strong class="gold-text" data-rating>5.0</strong>
-        <div class="stars" data-stars>★★★★★</div>
-        <small><span data-review-count>234</span> Reviews</small>
+        <strong class="gold-text" data-barber-rating="tony">5.0</strong>
+        <div class="stars">★★★★★</div>
+        <small><span data-barber-count="tony">234</span> Reviews</small>
       </div>
     </div>
     <div class="about-copy reveal">
-      <span class="eyebrow">Meet Your Barber</span>
+      <span class="eyebrow">Owner</span>
       <h2 class="gold-text">Tony Fuller</h2>
       <div class="title">Master Barber &nbsp;|&nbsp; SMP Certified</div>
       <blockquote>Where precision, professionalism, and consistency come first.</blockquote>
@@ -92,28 +92,13 @@
   </div>
 </section>
 
-<section class="team" id="endless">
-  <div class="wrap barber-card reveal">
-    <div class="barber-photo">
-      <img src="/assets/endless/logo.jpg" alt="Endless Cutzz logo and barber photos">
-    </div>
-    <div class="barber-info">
-      <span class="eyebrow">Also In The Shop</span>
-      <h2 class="gold-text">Endless Cutzz</h2>
-      <div class="title">Barber &nbsp;|&nbsp; Walk-ins Welcome</div>
-      <p class="motto">"It's more than a haircut, it's a lifestyle."</p>
-      <p>A newer barber building his brand out of Made2Fade, bringing hustle and care to every cut. Walk in or book ahead on Booksy. Every Sunday, military cuts are $25 for active duty and veterans.</p>
-      <div class="barber-status"><i class="status-dot" id="endlessDot"></i><b id="endlessStatus">Thu–Sat &amp; Sun</b></div>
-      <ul class="mini-hours" id="endlessHours"></ul>
-      <p class="hours-note" id="endlessNote"></p>
-      <div class="hero-ctas left-ctas">
-        <a href="https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford" data-barber-link="endless" target="_blank" rel="noopener" class="btn btn-gold">Book on Booksy</a>
-        <a href="https://www.instagram.com/Endless_Cutzz/" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-          @Endless_Cutzz
-        </a>
-      </div>
-    </div>
+<section class="team center" id="team">
+  <div class="wrap">
+    <span class="eyebrow">The Made2Fade Team</span>
+    <h2>Pick Your <span class="gold-text">Barber</span></h2>
+    <div class="divider">✂</div>
+    <p class="team-intro">Every chair at Made2Fade books on its own. Choose your barber, see their cuts and lock in a time.</p>
+    <div class="team-grid" id="teamGrid"></div>
   </div>
 </section>
 
@@ -157,14 +142,12 @@
 
     <div class="price-menu reveal">
       <h3>Price <span class="gold-text">Menu</span></h3>
-      <div class="tabs" role="tablist" id="priceTabs">
-        <button role="tab" aria-selected="true" data-barber="tony">Tony Fuller</button>
-        <button role="tab" aria-selected="false" data-barber="endless">Endless Cutzz</button>
-      </div>
+      <div class="tabs" role="tablist" id="priceTabs"></div>
       <ul class="price-list" id="priceList">
         <li><div class="price-row"><span class="name">Adult Fade</span><span class="dots"></span><span class="price">$45</span></div></li>
         <li><div class="price-row"><span class="name">Child Cut</span><span class="dots"></span><span class="price">$35</span></div></li>
       </ul>
+      <div class="center price-cta"><a class="btn btn-gold" id="priceBook" href="https://book.thecut.co/tonyfuller" target="_blank" rel="noopener">Book with Tony</a></div>
       <p class="price-foot">Cash or credit/debit accepted. Please book the correct service so there's enough time for your appointment.</p>
     </div>
   </div>
@@ -175,39 +158,9 @@
     <span class="eyebrow">The Portfolio</span>
     <h2>Fresh <span class="gold-text">Cuts</span></h2>
     <div class="divider">✂</div>
-    <div class="gallery-grid">
-      <figure class="cut reveal">
-        <img src="/assets/cut-curly-top.jpg" alt="Curly top fade with beard" loading="lazy">
-        <figcaption><strong>Curly Top Fade</strong><span>Clean · Sharp · Fresh</span></figcaption>
-      </figure>
-      <figure class="cut reveal">
-        <img src="/assets/cut-taper-design.jpg" alt="Taper fade with lightning bolt design" loading="lazy">
-        <figcaption><strong>Taper Fade Design</strong><span>Details Matter</span></figcaption>
-      </figure>
-      <figure class="cut reveal">
-        <img src="/assets/cut-lineup-beard.jpg" alt="Lineup and beard with curly top" loading="lazy">
-        <figcaption><strong>Lineup &amp; Beard</strong><span>Precision Every Time</span></figcaption>
-      </figure>
-      <figure class="cut reveal">
-        <img src="/assets/cut-skin-fade.jpg" alt="Skin fade with sharp lineup and textured top" loading="lazy">
-        <figcaption><strong>Skin Fade &amp; Lineup</strong><span>Crisp Edges</span></figcaption>
-      </figure>
-    </div>
-    <h3 class="gallery-sub">From <span class="gold-text">Endless Cutzz</span></h3>
-    <div class="gallery-grid three">
-      <figure class="cut reveal">
-        <img src="/assets/endless/fade-1.jpg" alt="Low fade with sharp lineup and full beard" loading="lazy">
-        <figcaption><strong>Fade &amp; Full Beard</strong><span>By Endless Cutzz</span></figcaption>
-      </figure>
-      <figure class="cut reveal">
-        <img src="/assets/endless/fade-2.jpg" alt="Waves with a clean taper" loading="lazy">
-        <figcaption><strong>Waves &amp; Taper</strong><span>By Endless Cutzz</span></figcaption>
-      </figure>
-      <figure class="cut reveal">
-        <img src="/assets/endless/fade-3.jpg" alt="Short cut with a bald fade" loading="lazy">
-        <figcaption><strong>Bald Fade</strong><span>By Endless Cutzz</span></figcaption>
-      </figure>
-    </div>
+    <div class="tabs" role="tablist" id="cutTabs"></div>
+    <div class="gallery-grid" id="cutGrid"></div>
+    <button class="btn btn-ghost more-cuts" id="moreCuts" hidden>Show More Cuts</button>
     <div class="reel">
       <video src="/assets/showcase.mp4" controls muted loop playsinline preload="metadata" aria-label="Made2Fade cut showcase video"></video>
       <div class="reel-copy reveal left">
@@ -229,14 +182,14 @@
     <h2>Client <span class="gold-text">Reviews</span></h2>
     <div class="divider">✂</div>
     <div class="rating-big">
-      <strong class="gold-text" data-rating>5.0</strong>
+      <strong class="gold-text" data-team-rating>5.0</strong>
       <div class="left">
-        <div class="stars" data-stars>★★★★★</div>
-        <small><span data-review-count>234</span> verified reviews on theCut</small>
+        <div class="stars">★★★★★</div>
+        <small><span data-team-count>500+</span> five-star reviews across the team on theCut</small>
       </div>
     </div>
     <div class="review-grid" id="reviewGrid"></div>
-    <a href="https://app.thecut.co/barbers/tonyfuller" data-link="reviews" target="_blank" rel="noopener" class="btn btn-ghost more">Read All Reviews</a>
+    <a href="#team" class="btn btn-ghost more">Find Your Barber</a>
   </div>
 </section>
 
@@ -310,7 +263,7 @@
     <p>Skip the wait. Lock in your time on theCut app and walk in ready to get right.</p>
     <div class="hero-ctas">
       <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Book with Tony</a>
-      <a href="https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford" data-barber-link="endless" target="_blank" rel="noopener" class="btn btn-gold">Book with Endless Cutzz</a>
+      <a href="#team" class="btn btn-ghost">Choose Another Barber</a>
       <a href="tel:+15406028192" data-tel class="btn btn-ghost">Call The Shop</a>
     </div>
   </div>

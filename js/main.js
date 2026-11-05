@@ -29,6 +29,22 @@ const io = new IntersectionObserver(entries => entries.forEach(e => {
 const observeReveals = () => $$('.reveal:not(.in)').forEach(el => io.observe(el));
 observeReveals();
 
+// ---------- Helpers ----------
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+}
+const initials = name => name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+// Short label for tabs and buttons, e.g. "Tony", "DaeCutz", "D The Barber"
+const firstName = b => b.short || b.nickname || b.name.split(' ')[0];
+const barber = (shop, id) => shop.barbers.find(b => b.id === id);
+const tel = phone => 'tel:+1' + phone.replace(/\D/g, '');
+
+const ICONS = {
+  instagram: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  tiktok: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>',
+};
+
 // ---------- QR code ----------
 
 // Scanning lands on /app, which sends phones to the right app store or the booking page.
@@ -45,76 +61,169 @@ function renderQr(shop) {
   box.dataset.target = target;
 }
 
-// ---------- Data-driven sections ----------
+// ---------- Team ----------
 
-function renderStatic(shop) {
-  $$('[data-rating]').forEach(el => { el.textContent = shop.rating.toFixed(1); });
-  $$('[data-review-count]').forEach(el => { el.textContent = shop.reviewCount.toLocaleString('en-US'); });
-  $$('[data-stars]').forEach(el => { el.textContent = stars(shop.rating); });
-  $$('[data-phone]').forEach(el => {
-    el.textContent = shop.phone;
-    if (el.tagName === 'A') el.href = 'tel:+1' + shop.phone.replace(/\D/g, '');
-  });
-  $$('[data-tel]').forEach(el => { el.href = 'tel:+1' + shop.phone.replace(/\D/g, ''); });
-  $$('[data-link]').forEach(el => {
-    const url = shop.links[el.dataset.link];
-    if (url) el.href = url;
-  });
+function renderTeam(shop) {
+  const grid = $('#teamGrid');
+  // Tony has the owner section above, so the grid shows everyone else
+  grid.innerHTML = shop.barbers.filter(b => b.id !== 'tony').map(b => {
+    const img = b.photo || b.cuts[0]?.src;
+    const media = img
+      ? `<img src="${img}" alt="${esc(b.name)}" loading="lazy">`
+      : `<div class="team-initials">${initials(b.name)}</div>`;
+    const rating = b.reviewCount
+      ? `<span class="team-rating"><b>★ ${b.rating.toFixed(1)}</b> (${b.reviewCount})</span>`
+      : '<span class="team-rating new">New on theCut</span>';
+    const social = Object.entries(b.social || {}).map(([k, url]) =>
+      `<a class="icon-link" href="${url}" target="_blank" rel="noopener" aria-label="${esc(b.name)} on ${k}">${ICONS[k] || ''}</a>`).join('');
+    const hours = b.hours ? `
+      <div class="barber-status"><i class="status-dot" data-status-dot="${b.id}"></i><b data-status-text="${b.id}"></b></div>
+      <ul class="mini-hours" data-hours="${b.id}"></ul>
+      ${b.hoursNote ? `<p class="hours-note">${esc(b.hoursNote)}</p>` : ''}` : '';
+    return `<article class="team-card reveal">
+      <div class="team-media">${media}</div>
+      <div class="team-body">
+        <h3>${esc(b.name)}</h3>
+        ${b.nickname ? `<div class="team-nick">"${esc(b.nickname)}"</div>` : ''}
+        <div class="team-title">${esc(b.title)}</div>
+        ${rating}
+        <p>${esc(b.bio)}</p>
+        ${hours}
+        <div class="team-actions">
+          <a class="btn btn-gold btn-sm" href="${b.booking}" target="_blank" rel="noopener">Book on ${esc(b.bookingLabel)}</a>
+          ${b.altBooking ? `<a class="btn btn-ghost btn-sm" href="${b.altBooking}" target="_blank" rel="noopener">${esc(b.altBookingLabel)}</a>` : ''}
+          ${b.cuts.length ? `<a class="btn btn-ghost btn-sm" href="#cuts" data-show-cuts="${b.id}">See Cuts</a>` : ''}
+          ${social}
+        </div>
+      </div>
+    </article>`;
+  }).join('');
 
-  $$('[data-barber-link]').forEach(el => {
-    const b = barber(shop, el.dataset.barberLink);
-    if (b?.booking) el.href = b.booking;
-  });
-
-  const selected = $('#priceTabs [aria-selected="true"]')?.dataset.barber || 'tony';
-  renderPrices(shop, selected);
-
-  // Highlight the store button for the visitor's phone
-  const p = platform();
-  if (p !== 'other') $(`.store-btn[data-store="${p}"]`)?.classList.add('highlight');
-
-  renderQr(shop);
+  grid.querySelectorAll('[data-show-cuts]').forEach(a => a.addEventListener('click', () => selectCuts(a.dataset.showCuts)));
 }
 
-const barber = (shop, id) => (shop.barbers || []).find(b => b.id === id);
+// Live status + day tiles for barbers who publish weekly hours
+function renderBarberHours(shop) {
+  const todayDow = shopDay(shopNow(shop.timezone)).dow;
+  shop.barbers.filter(b => b.hours).forEach(b => {
+    const status = openStatus({ ...shop, hours: b.hours });
+    const dot = $(`[data-status-dot="${b.id}"]`);
+    if (!dot) return;
+    dot.classList.toggle('open', status.state === 'open');
+    dot.classList.toggle('soon', status.state === 'soon');
+    $(`[data-status-text="${b.id}"]`).textContent = status.label.replace('Open now', 'In the shop now');
 
-// Tony's services live at the top level of shop.json; other barbers under "barbers".
-function renderPrices(shop, id) {
-  const list = $('#priceList');
-  const services = id === 'tony' ? shop.services : barber(shop, id)?.services;
-  if (!list || !services?.length) return;
-  list.innerHTML = services.map(s => {
-    const time = s.minutes >= 60 ? `${s.minutes / 60} hr${s.minutes >= 120 ? 's' : ''}` : `${s.minutes} min`;
+    // Compact form for the small day tiles, e.g. "8:30a–6p"
+    const short = t => formatTime(t).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p');
+    $(`[data-hours="${b.id}"]`).innerHTML = [1, 2, 3, 4, 5, 6, 0].map(dow => {
+      const h = b.hours[DAYS[dow]];
+      const name = DAYS[dow][0].toUpperCase() + DAYS[dow].slice(1, 3);
+      return `<li class="${h ? '' : 'off'} ${dow === todayDow ? 'today' : ''}"><span>${name}</span><span>${h ? `${short(h[0])}–${short(h[1])}` : 'Off'}</span></li>`;
+    }).join('');
+  });
+}
+
+// ---------- Cuts gallery ----------
+
+const CUTS_PAGE = 12;
+let cutFilter = 'all';
+let cutLimit = CUTS_PAGE;
+
+function allCuts(shop) {
+  // Interleave barbers so "All" shows a mix instead of one barber's whole set first
+  const lists = shop.barbers.filter(b => b.cuts.length).map(b => b.cuts.map(c => ({ ...c, barber: b })));
+  const mixed = [];
+  for (let i = 0; lists.some(l => i < l.length); i++) lists.forEach(l => l[i] && mixed.push(l[i]));
+  return mixed;
+}
+
+function renderCuts(shop) {
+  const withCuts = shop.barbers.filter(b => b.cuts.length);
+  $('#cutTabs').innerHTML = [`<button role="tab" data-cuts="all" aria-selected="${cutFilter === 'all'}">All</button>`]
+    .concat(withCuts.map(b => `<button role="tab" data-cuts="${b.id}" aria-selected="${cutFilter === b.id}">${esc(firstName(b))}</button>`))
+    .join('');
+  $$('#cutTabs button').forEach(btn => btn.addEventListener('click', () => selectCuts(btn.dataset.cuts)));
+
+  const cuts = cutFilter === 'all' ? allCuts(shop) : barber(shop, cutFilter).cuts.map(c => ({ ...c, barber: barber(shop, cutFilter) }));
+  $('#cutGrid').innerHTML = cuts.slice(0, cutLimit).map(c => `
+    <figure class="cut">
+      <img src="${c.src}" alt="${esc(c.alt || `Haircut by ${c.barber.name}`)}" loading="lazy">
+      <figcaption><strong>${esc(c.barber.name)}</strong><span>${esc(c.alt || 'Made2Fade')}</span></figcaption>
+    </figure>`).join('');
+  const more = $('#moreCuts');
+  more.hidden = cuts.length <= cutLimit;
+}
+
+function selectCuts(id) {
+  cutFilter = id;
+  cutLimit = CUTS_PAGE;
+  if (shop) renderCuts(shop);
+}
+
+$('#moreCuts').addEventListener('click', () => {
+  cutLimit += CUTS_PAGE;
+  if (shop) renderCuts(shop);
+});
+
+// ---------- Prices ----------
+
+let priceFilter = 'tony';
+
+function renderPrices(shop) {
+  $('#priceTabs').innerHTML = shop.barbers.map(b =>
+    `<button role="tab" data-barber="${b.id}" aria-selected="${priceFilter === b.id}">${esc(firstName(b))}</button>`).join('');
+  $$('#priceTabs button').forEach(btn => btn.addEventListener('click', () => selectPrices(btn.dataset.barber)));
+
+  const b = barber(shop, priceFilter);
+  $('#priceList').innerHTML = b.services.map(s => {
+    const time = s.minutes >= 60
+      ? `${+(s.minutes / 60).toFixed(1)} hr${s.minutes > 60 ? 's' : ''}`
+      : `${s.minutes} min`;
     return `<li>
       <div class="price-row"><span class="name">${esc(s.name)}</span><span class="dots"></span><span class="price">$${s.price}</span></div>
       <div class="price-meta">${time}${s.note ? ' · ' + esc(s.note) : ''}</div>
     </li>`;
   }).join('');
+  const book = $('#priceBook');
+  book.href = b.booking;
+  book.textContent = `Book with ${firstName(b)}`;
 }
 
-$$('#priceTabs button').forEach(btn => btn.addEventListener('click', () => {
-  $$('#priceTabs button').forEach(b => b.setAttribute('aria-selected', b === btn));
-  if (shop) renderPrices(shop, btn.dataset.barber);
-}));
+function selectPrices(id) {
+  priceFilter = id;
+  if (shop) renderPrices(shop);
+}
 
-function renderBarber(shop, id) {
-  const b = barber(shop, id);
-  if (!b) return;
-  const status = openStatus({ ...shop, hours: b.hours });
-  const dot = $(`#${id}Dot`);
-  dot.classList.toggle('open', status.state === 'open');
-  dot.classList.toggle('soon', status.state === 'soon');
-  $(`#${id}Status`).textContent = status.label.replace('Open now', 'In the shop now');
+// ---------- Data-driven sections ----------
 
-  const todayDow = shopDay(shopNow(shop.timezone)).dow;
-  $(`#${id}Hours`).innerHTML = [1, 2, 3, 4, 5, 6, 0].map(dow => {
-    const h = b.hours[DAYS[dow]];
-    const name = DAYS[dow].slice(0, 3);
-    // Compact form for the small day tiles, e.g. "8:30a–6p"
-    const short = t => formatTime(t).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p');
-    return `<li class="${h ? '' : 'off'} ${dow === todayDow ? 'today' : ''}"><span>${name[0].toUpperCase() + name.slice(1)}</span><span>${h ? `${short(h[0])}–${short(h[1])}` : 'Off'}</span></li>`;
-  }).join('');
-  $(`#${id}Note`).textContent = b.hoursNote || '';
+function renderStatic(shop) {
+  const rated = shop.barbers.filter(b => b.reviewCount);
+  const total = rated.reduce((n, b) => n + b.reviewCount, 0);
+  const avg = rated.reduce((n, b) => n + b.rating * b.reviewCount, 0) / total;
+  $$('[data-team-rating]').forEach(el => { el.textContent = avg.toFixed(1); });
+  $$('[data-team-count]').forEach(el => { el.textContent = total.toLocaleString('en-US'); });
+  $$('[data-barber-rating]').forEach(el => { el.textContent = barber(shop, el.dataset.barberRating).rating.toFixed(1); });
+  $$('[data-barber-count]').forEach(el => { el.textContent = barber(shop, el.dataset.barberCount).reviewCount; });
+
+  $$('[data-phone]').forEach(el => {
+    el.textContent = shop.phone;
+    if (el.tagName === 'A') el.href = tel(shop.phone);
+  });
+  $$('[data-tel]').forEach(el => { el.href = tel(shop.phone); });
+  $$('[data-link]').forEach(el => {
+    const url = shop.links[el.dataset.link];
+    if (url) el.href = url;
+  });
+
+  // Highlight the store button for the visitor's phone
+  const p = platform();
+  if (p !== 'other') $(`.store-btn[data-store="${p}"]`)?.classList.add('highlight');
+
+  renderTeam(shop);
+  renderCuts(shop);
+  renderPrices(shop);
+  renderQr(shop);
+  observeReveals();
 }
 
 // Anything that depends on the current time. Re-run every 30 seconds.
@@ -150,24 +259,22 @@ function renderLive(shop) {
   }
   $('#closures').innerHTML = notes.map(n => `<p class="closure-note">⚠ ${n}</p>`).join('');
 
-  const grid = $('#reviewGrid');
-  if (grid && shop.reviews?.length) {
-    grid.innerHTML = shop.reviews.map(r => {
-      const initials = r.name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
-      return `<article class="review">
-        <div class="avatar">${esc(initials)}</div>
-        <div><strong>${esc(r.name)}</strong><div class="stars">${stars(r.stars)}</div><time datetime="${r.date}">${timeAgo(r.date, shop.timezone)}</time></div>
-      </article>`;
-    }).join('');
-  }
+  const reviews = [...shop.reviews].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+  $('#reviewGrid').innerHTML = reviews.map(r => {
+    const b = barber(shop, r.barber);
+    return `<article class="review">
+      <div class="avatar">${esc(initials(r.name))}</div>
+      <div>
+        <strong>${esc(r.name)}</strong><div class="stars">${stars(r.stars)}</div>
+        ${r.text ? `<q>${esc(r.text)}</q>` : ''}
+        <time datetime="${r.date}">${timeAgo(r.date, shop.timezone)}${b ? ` · for ${esc(firstName(b))}` : ''}</time>
+      </div>
+    </article>`;
+  }).join('');
 
-  renderBarber(shop, 'endless');
+  renderBarberHours(shop);
 
   $('#year').textContent = now.y;
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }
 
 // ---------- Boot ----------

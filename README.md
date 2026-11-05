@@ -29,9 +29,10 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   ]
   ```
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
-- **Reviews:** update `"rating"` and `"reviewCount"` from theCut, and add new entries to the top of `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
-- **Prices:** Tony's are in `"services"`. Other barbers' prices are in their entry under `"barbers"`.
-- **Other barbers:** each entry in `"barbers"` has its own hours, booking link and services. Endless Cutzz books through Booksy; his photos are in `assets/endless/`.
+- **Ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
+- **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Tony stays first since he has the owner section. Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
+- **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put photos in `assets/cuts/<id>/`. The team cards, gallery filters and price tabs pick it up automatically.
+- **Reviews:** the recent reviews list in `"reviews"` takes a `"barber"` id so each one shows who it was for.
 
 The open/closed status, today's highlighted hours and review ages are calculated in Eastern time and refresh every 30 seconds while the page is open.
 

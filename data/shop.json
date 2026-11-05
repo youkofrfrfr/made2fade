@@ -1,6 +1,5 @@
 {
   "name": "Made2Fade Barbershop",
-  "barber": "Tony Fuller",
   "phone": "(540) 602-8192",
   "address": {
     "line1": "60 Susa Dr., Suite 111",
@@ -26,27 +25,155 @@
     "appStore": "https://apps.apple.com/us/app/thecut-find-book-barbers/id1101408626",
     "googlePlay": "https://play.google.com/store/apps/details?id=com.thecut.mobile.android.thecut"
   },
-  "rating": 5.0,
-  "reviewCount": 234,
   "reviews": [
-    { "name": "Kiandre S.", "stars": 5, "date": "2026-11-05" },
-    { "name": "Floyd", "stars": 5, "date": "2026-11-04" },
-    { "name": "Jacob V.", "stars": 5, "date": "2026-10-29" },
-    { "name": "Victor V.", "stars": 5, "date": "2026-10-29" },
-    { "name": "Travis S.", "stars": 5, "date": "2026-10-22" },
-    { "name": "Brandon G.", "stars": 5, "date": "2026-10-22" },
-    { "name": "Jacob C.", "stars": 5, "date": "2026-10-15" },
-    { "name": "Jason G.", "stars": 5, "date": "2026-10-15" }
+    { "name": "Kiandre S.", "stars": 5, "date": "2026-11-05", "barber": "tony" },
+    { "name": "Mariama S.", "stars": 5, "date": "2026-11-03", "barber": "dom" },
+    { "name": "Teo R.", "stars": 5, "date": "2026-11-01", "barber": "d" },
+    { "name": "Floyd", "stars": 5, "date": "2026-11-04", "barber": "tony" },
+    { "name": "Chris C.", "stars": 5, "date": "2026-10-30", "barber": "d", "text": "I had a bad haircut elsewhere, but he got me right!" },
+    { "name": "Lord S.", "stars": 5, "date": "2026-10-30", "barber": "dom" },
+    { "name": "Jacob V.", "stars": 5, "date": "2026-10-29", "barber": "tony" },
+    { "name": "Carl J.", "stars": 5, "date": "2026-10-29", "barber": "d", "text": "Very patient and listens to requests." },
+    { "name": "Walter G.", "stars": 5, "date": "2026-10-22", "barber": "dom" },
+    { "name": "Travis S.", "stars": 5, "date": "2026-10-22", "barber": "tony" },
+    { "name": "Andrew V.", "stars": 5, "date": "2026-10-22", "barber": "d", "text": "Cut my hair really well. Chill dude." },
+    { "name": "LJ F.", "stars": 5, "date": "2026-10-05", "barber": "dashawn" }
   ],
   "barbers": [
     {
-      "id": "endless",
-      "name": "Endless Cutzz",
+      "id": "tony",
+      "name": "Tony Fuller",
+      "title": "Owner · Master Barber · SMP Certified",
+      "photo": "/assets/tony.jpg",
+      "bio": "Where precision, professionalism and consistency come first. Clean fades, sharp lineups, full transformations and scalp micropigmentation.",
+      "rating": 5.0,
+      "reviewCount": 234,
+      "booking": "https://book.thecut.co/tonyfuller",
+      "bookingLabel": "theCut",
+      "social": { "instagram": "https://www.instagram.com/made2fade_llc" },
+      "cuts": [
+        { "src": "/assets/cut-curly-top.jpg", "alt": "Curly top fade" },
+        { "src": "/assets/cut-taper-design.jpg", "alt": "Taper fade with a lightning bolt design" },
+        { "src": "/assets/cut-lineup-beard.jpg", "alt": "Lineup and beard" },
+        { "src": "/assets/cut-skin-fade.jpg", "alt": "Skin fade with a sharp lineup" },
+        { "src": "/assets/cuts/tony/01.jpg" }, { "src": "/assets/cuts/tony/02.jpg" }, { "src": "/assets/cuts/tony/03.jpg" },
+        { "src": "/assets/cuts/tony/04.jpg" }, { "src": "/assets/cuts/tony/05.jpg" }, { "src": "/assets/cuts/tony/06.jpg" },
+        { "src": "/assets/cuts/tony/07.jpg" }, { "src": "/assets/cuts/tony/08.jpg" }, { "src": "/assets/cuts/tony/09.jpg" }
+      ],
+      "services": [
+        { "name": "Adult Fade", "price": 45, "minutes": 30, "note": "Ages 13 and up" },
+        { "name": "Child Cut", "price": 35, "minutes": 30, "note": "Ages 12 and under" },
+        { "name": "Adult Cut & Beard Trim", "price": 50, "minutes": 30 },
+        { "name": "Adult Cut + Beard + Razor", "price": 55, "minutes": 40 },
+        { "name": "Cut, Beard, Enhancements & Razor", "price": 60, "minutes": 45 },
+        { "name": "Line Up", "price": 25, "minutes": 15, "note": "Line up only" },
+        { "name": "Head & Beard Line Up", "price": 30, "minutes": 30 },
+        { "name": "Head & Beard Line Up with Razor", "price": 35, "minutes": 30 },
+        { "name": "Beard Trim", "price": 25, "minutes": 15 },
+        { "name": "Beard Trim, Razor & Enhancements", "price": 35, "minutes": 30 },
+        { "name": "Eyebrows", "price": 15, "minutes": 15 },
+        { "name": "Hair Wash", "price": 10, "minutes": 15 },
+        { "name": "Scalp Micropigmentation (SMP)", "price": 1000, "minutes": 480, "note": "Consultation required first. $300 deposit before the appointment." }
+      ]
+    },
+    {
+      "id": "dom",
+      "name": "Domonick Nelson",
+      "title": "Barber · Domonick's Mobile Barbershop",
+      "photo": "/assets/barbers/dom.jpg",
+      "bio": "Cutting in Stafford since 2018 with 250+ five-star reviews. Fades, afro mohawks, Caesars and beard work for adults and kids.",
+      "rating": 5.0,
+      "reviewCount": 251,
+      "booking": "https://app.thecut.co/barbers/dom",
+      "bookingLabel": "theCut",
+      "cuts": [
+        { "src": "/assets/cuts/dom/01.jpg" }, { "src": "/assets/cuts/dom/02.jpg" }, { "src": "/assets/cuts/dom/03.jpg" },
+        { "src": "/assets/cuts/dom/04.jpg" }, { "src": "/assets/cuts/dom/05.jpg" }, { "src": "/assets/cuts/dom/06.jpg" },
+        { "src": "/assets/cuts/dom/07.jpg" }, { "src": "/assets/cuts/dom/08.jpg" }, { "src": "/assets/cuts/dom/09.jpg" }
+      ],
+      "services": [
+        { "name": "Adult Fade / Afro Mohawk with Beard & Enhancement", "price": 55, "minutes": 30 },
+        { "name": "Adult Fade / Mohawk with Beard", "price": 50, "minutes": 30 },
+        { "name": "Adult Fade", "price": 45, "minutes": 30 },
+        { "name": "Adult Even / Caesar with Beard", "price": 45, "minutes": 30 },
+        { "name": "Adult Shape Up (No Fade)", "price": 35, "minutes": 30 },
+        { "name": "Beard Only", "price": 30, "minutes": 30 },
+        { "name": "Child Fade / Afro Mohawk", "price": 40, "minutes": 30, "note": "Ages 12 and under" },
+        { "name": "Child Even", "price": 35, "minutes": 30, "note": "Ages 12 and under" },
+        { "name": "Child Shape Up", "price": 35, "minutes": 30, "note": "Ages 12 and under" }
+      ]
+    },
+    {
+      "id": "dashawn",
+      "name": "Dashawn Carter",
+      "nickname": "DaeCutz",
+      "title": "Barber · Appointments Incl. Sundays",
+      "bio": "Clean tapers, waves, locs and shape ups. Clients say the conversation is as good as the cut.",
+      "rating": 5.0,
+      "reviewCount": 7,
+      "booking": "https://app.thecut.co/barbers/DaeCutz-dcjsn3d",
+      "bookingLabel": "theCut",
+      "cuts": [
+        { "src": "/assets/cuts/dashawn/01.jpg" }, { "src": "/assets/cuts/dashawn/02.jpg" }, { "src": "/assets/cuts/dashawn/03.jpg" },
+        { "src": "/assets/cuts/dashawn/04.jpg" }, { "src": "/assets/cuts/dashawn/05.jpg" }, { "src": "/assets/cuts/dashawn/06.jpg" },
+        { "src": "/assets/cuts/dashawn/07.jpg" }, { "src": "/assets/cuts/dashawn/08.jpg" }
+      ],
+      "services": [
+        { "name": "Adult Haircut", "price": 40, "minutes": 35, "note": "Ages 13 and up" },
+        { "name": "Adult Haircut with Enhancements", "price": 45, "minutes": 40 },
+        { "name": "Shape Up", "price": 25, "minutes": 25 },
+        { "name": "Beard Trim", "price": 25, "minutes": 15 },
+        { "name": "Kids Haircut", "price": 30, "minutes": 35, "note": "Ages 12 and under" },
+        { "name": "Kids Haircut with Enhancements", "price": 35, "minutes": 40 },
+        { "name": "Sunday Cuts", "price": 40, "minutes": 40, "note": "Appointments on Sundays" }
+      ]
+    },
+    {
+      "id": "d",
+      "name": "D The Barber",
+      "short": "D The Barber",
+      "title": "Barber · English & Español",
+      "bio": "Trained and licensed, specializing in kid cuts, transformations and clean all-even cuts. Walk-ins welcome, just come inside or give a call.",
+      "rating": 5.0,
+      "reviewCount": 13,
+      "booking": "https://app.thecut.co/barbers/onewayfade-d",
+      "bookingLabel": "theCut",
+      "social": { "tiktok": "https://tiktok.com/@onewayfade" },
+      "cuts": [
+        { "src": "/assets/cuts/d/01.jpg" }, { "src": "/assets/cuts/d/02.jpg" }, { "src": "/assets/cuts/d/03.jpg" },
+        { "src": "/assets/cuts/d/04.jpg" }, { "src": "/assets/cuts/d/05.jpg" }, { "src": "/assets/cuts/d/06.jpg" }
+      ],
+      "services": [
+        { "name": "Adult Cut", "price": 45, "minutes": 45 },
+        { "name": "Adult Cut / Beard Trim / Shape Up", "price": 50, "minutes": 45 },
+        { "name": "Adult Cut with Hairline Enhancements", "price": 50, "minutes": 45 },
+        { "name": "Adult Cut with Enhancements & Beard", "price": 60, "minutes": 55 },
+        { "name": "Bald Cut / Beard with Razor", "price": 50, "minutes": 60, "note": "Hot towel included" },
+        { "name": "Transformation Cut", "price": 60, "minutes": 60, "note": "Hair past the shoulders" },
+        { "name": "All Even Adult (No Beard)", "price": 35, "minutes": 30 },
+        { "name": "All Even Adult with Beard", "price": 40, "minutes": 40 },
+        { "name": "Hair Line Up with Beard", "price": 30, "minutes": 20 },
+        { "name": "Line Up", "price": 25, "minutes": 20 },
+        { "name": "Beard", "price": 25, "minutes": 20 },
+        { "name": "Eyebrows", "price": 15, "minutes": 20 },
+        { "name": "Kid Cut", "price": 35, "minutes": 45, "note": "Ages 12 and under" },
+        { "name": "Kid Cut with Enhancements", "price": 40, "minutes": 45, "note": "Ages 12 and under" },
+        { "name": "All Even Kid", "price": 30, "minutes": 35, "note": "Ages 12 and under, no fade" },
+        { "name": "House Call", "price": 80, "minutes": 60, "note": "Price depends on distance" }
+      ]
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus Brooks",
+      "nickname": "Endless Cutzz",
       "title": "Barber · Walk-ins Welcome",
-      "photo": "/assets/endless/logo.jpg",
-      "instagram": "https://www.instagram.com/Endless_Cutzz/",
-      "booking": "https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford",
-      "bookingLabel": "Booksy",
+      "photo": "/assets/barbers/marcus.jpg",
+      "bio": "\"It's more than a haircut, it's a lifestyle.\" A newer barber building his brand at Made2Fade. $25 military cuts every Sunday for active duty and veterans.",
+      "booking": "https://app.thecut.co/barbers/Marcus_Brooks_mdb2011",
+      "bookingLabel": "theCut",
+      "altBooking": "https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford",
+      "altBookingLabel": "Booksy",
+      "social": { "instagram": "https://www.instagram.com/Endless_Cutzz/" },
       "hours": {
         "monday": null,
         "tuesday": null,
@@ -56,31 +183,33 @@
         "saturday": ["08:30", "16:00"],
         "sunday": ["09:00", "14:00"]
       },
-      "hoursNote": "Weekend hours can change. Updates are posted on Booksy ahead of time.",
+      "hoursNote": "Weekend hours can change. Updates are posted ahead of time.",
+      "cuts": [
+        { "src": "/assets/cuts/marcus/01.jpg" }, { "src": "/assets/cuts/marcus/02.jpg", "alt": "Before and after" }, { "src": "/assets/cuts/marcus/03.jpg" },
+        { "src": "/assets/cuts/marcus/04.jpg" }, { "src": "/assets/cuts/marcus/05.jpg" }, { "src": "/assets/cuts/marcus/06.jpg" },
+        { "src": "/assets/cuts/marcus/07.jpg" }, { "src": "/assets/cuts/marcus/08.jpg" }
+      ],
       "services": [
-        { "name": "Haircut", "price": 45, "minutes": 40 },
-        { "name": "Beard & Shape-Up", "price": 40, "minutes": 30 },
-        { "name": "Shape-Up (No Beard)", "price": 30, "minutes": 15 },
-        { "name": "Kid's Haircut", "price": 35, "minutes": 40, "note": "Ages 12 and under" },
-        { "name": "Kid's Shape-Up", "price": 25, "minutes": 15, "note": "Ages 12 and under" },
+        { "name": "Adult Cut", "price": 45, "minutes": 45, "note": "Ages 13+. Razor and hot towel finish. Enhancements +$5" },
+        { "name": "Adult Full Shape-Up with Beard", "price": 40, "minutes": 20 },
+        { "name": "Adult Shape-Up Only", "price": 30, "minutes": 15 },
+        { "name": "Kids Cut", "price": 35, "minutes": 40, "note": "Ages 12 and under" },
+        { "name": "Kids Shape-Up Only", "price": 25, "minutes": 15, "note": "Ages 12 and under" },
         { "name": "Military Cut", "price": 25, "minutes": 40, "note": "Active duty and veterans, Sundays only" },
-        { "name": "House Call", "price": 100, "minutes": 45, "note": "Travel, cut, hot towel, razor and hair & beard oil" }
+        { "name": "House Call", "price": 100, "minutes": 60, "note": "Travel, cut, hot towel, razor and hair & beard oil" }
+      ]
+    },
+    {
+      "id": "cera",
+      "name": "Cera Addi",
+      "title": "Braider",
+      "bio": "Natural-hair braids and cornrows. Shampoo, condition and blow dry included. New to Made2Fade.",
+      "booking": "https://app.thecut.co/barbers/Cera-Addi-ca1cfzs",
+      "bookingLabel": "theCut",
+      "cuts": [],
+      "services": [
+        { "name": "Braids (2–10 Cornrows)", "price": 75, "minutes": 90, "note": "Natural hair, no extensions. Shampoo, condition and blow dry included." }
       ]
     }
-  ],
-  "services": [
-    { "name": "Adult Fade", "price": 45, "minutes": 30, "note": "Ages 13 and up" },
-    { "name": "Child Cut", "price": 35, "minutes": 30, "note": "Ages 12 and under" },
-    { "name": "Adult Cut & Beard Trim", "price": 50, "minutes": 30 },
-    { "name": "Adult Cut + Beard + Razor", "price": 55, "minutes": 40 },
-    { "name": "Cut, Beard, Enhancements & Razor", "price": 60, "minutes": 45 },
-    { "name": "Line Up", "price": 25, "minutes": 15, "note": "Line up only" },
-    { "name": "Head & Beard Line Up", "price": 30, "minutes": 30 },
-    { "name": "Head & Beard Line Up with Razor", "price": 35, "minutes": 30 },
-    { "name": "Beard Trim", "price": 25, "minutes": 15 },
-    { "name": "Beard Trim, Razor & Enhancements", "price": 35, "minutes": 30 },
-    { "name": "Eyebrows", "price": 15, "minutes": 15 },
-    { "name": "Hair Wash", "price": 10, "minutes": 15 },
-    { "name": "Scalp Micropigmentation (SMP)", "price": 1000, "minutes": 480, "note": "Consultation required first. $300 deposit before the appointment." }
   ]
 }
