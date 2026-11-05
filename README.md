@@ -37,14 +37,14 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
 - **Ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
 - **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Tony stays first since he has the owner section. Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
 - **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page (Cera Addi is hidden until she's confirmed).
-- **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put photos in `assets/cuts/<id>/`. The team cards, gallery filters and price tabs pick it up automatically.
+- **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put photos in `assets/cuts/<id>/`. The Barbers page, their profile page and the home page mix pick it up automatically.
 - **Reviews:** the recent reviews list in `"reviews"` takes a `"barber"` id so each one shows who it was for.
 
 The open/closed status, today's highlighted hours and review ages are calculated in Eastern time and refresh every 30 seconds while the page is open.
 
 ## QR code
 
-The QR code is generated in the browser and points to `https://<your-domain>/app`, so it stays correct on whatever domain the site is deployed to. That page puts the App Store or Google Play button first depending on the phone, plus a Book Online button. On localhost the QR points straight to the booking page instead.
+The QR code is generated in the browser and points to `https://<your-domain>/app`, so it stays correct on whatever domain the site is deployed to. That page puts the App Store or Google Play button first depending on the phone, plus a button to the Barbers page. On localhost the code still points at /app, so test it after deploying.
 
 ## Deploy on Vercel
 
