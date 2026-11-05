@@ -38,6 +38,36 @@
     { "name": "Jacob C.", "stars": 5, "date": "2026-10-15" },
     { "name": "Jason G.", "stars": 5, "date": "2026-10-15" }
   ],
+  "barbers": [
+    {
+      "id": "endless",
+      "name": "Endless Cutzz",
+      "title": "Barber · Walk-ins Welcome",
+      "photo": "/assets/endless/logo.jpg",
+      "instagram": "https://www.instagram.com/Endless_Cutzz/",
+      "booking": "https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford",
+      "bookingLabel": "Booksy",
+      "hours": {
+        "monday": null,
+        "tuesday": null,
+        "wednesday": null,
+        "thursday": ["08:30", "18:00"],
+        "friday": ["08:30", "18:00"],
+        "saturday": ["08:30", "16:00"],
+        "sunday": ["09:00", "14:00"]
+      },
+      "hoursNote": "Weekend hours can change. Updates are posted on Booksy ahead of time.",
+      "services": [
+        { "name": "Haircut", "price": 45, "minutes": 40 },
+        { "name": "Beard & Shape-Up", "price": 40, "minutes": 30 },
+        { "name": "Shape-Up (No Beard)", "price": 30, "minutes": 15 },
+        { "name": "Kid's Haircut", "price": 35, "minutes": 40, "note": "Ages 12 and under" },
+        { "name": "Kid's Shape-Up", "price": 25, "minutes": 15, "note": "Ages 12 and under" },
+        { "name": "Military Cut", "price": 25, "minutes": 40, "note": "Active duty and veterans, Sundays only" },
+        { "name": "House Call", "price": 100, "minutes": 45, "note": "Travel, cut, hot towel, razor and hair & beard oil" }
+      ]
+    }
+  ],
   "services": [
     { "name": "Adult Fade", "price": 45, "minutes": 30, "note": "Ages 13 and up" },
     { "name": "Child Cut", "price": 35, "minutes": 30, "note": "Ages 12 and under" },

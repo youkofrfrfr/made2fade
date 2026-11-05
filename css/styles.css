@@ -128,6 +128,30 @@ section { padding: clamp(72px, 10vw, 120px) 0; position: relative; }
 .checks li { display: flex; gap: 10px; align-items: center; font-weight: 500; }
 .checks svg { color: var(--gold); flex: none; }
 
+/* SECOND BARBER */
+.team { padding-top: 0; }
+.barber-card {
+  display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 64px); align-items: center;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  padding: clamp(24px, 4vw, 48px);
+}
+.barber-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
+.barber-info .title { color: var(--gold-light); letter-spacing: .2em; text-transform: uppercase; font-size: .82rem; font-weight: 600; margin-bottom: 14px; }
+.barber-info .motto { font-style: italic; color: var(--text); margin-bottom: 12px; }
+.barber-info p { color: var(--muted); margin-bottom: 18px; }
+.barber-status { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; margin-bottom: 14px; }
+.mini-hours { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 8px; }
+.mini-hours li {
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 4px; text-align: center;
+  display: flex; flex-direction: column; font-size: .72rem; color: var(--muted);
+}
+.mini-hours li span:first-child { font-weight: 700; color: var(--text); letter-spacing: .08em; text-transform: uppercase; }
+.mini-hours li.off { opacity: .45; }
+.mini-hours li.today { border-color: var(--gold); background: rgba(212,175,55,.1); }
+.mini-hours li.today span { color: var(--gold-light); }
+.barber-info .hours-note { font-size: .8rem; margin-bottom: 22px; }
+.left-ctas { justify-content: flex-start; }
+
 /* SERVICES + PRICES */
 .services { background: var(--ink); border-block: 1px solid var(--line); }
 .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 50px; }
@@ -148,6 +172,13 @@ section { padding: clamp(72px, 10vw, 120px) 0; position: relative; }
   padding: clamp(28px, 5vw, 52px); text-align: left;
 }
 .price-menu h3 { font-size: 1.6rem; text-align: center; margin-bottom: 30px; }
+.tabs { display: flex; justify-content: center; gap: 8px; margin: -10px 0 26px; flex-wrap: wrap; }
+.tabs button {
+  font: inherit; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  padding: 10px 20px; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--muted); border: 1.5px solid var(--line);
+}
+.tabs button[aria-selected="true"] { background: var(--gold-grad); color: #111; border-color: transparent; }
 .price-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; }
 .price-list li { padding: 14px 0; border-bottom: 1px dashed rgba(212,175,55,.18); }
 .price-row { display: flex; align-items: baseline; gap: 10px; }
@@ -159,6 +190,8 @@ section { padding: clamp(72px, 10vw, 120px) 0; position: relative; }
 
 /* GALLERY */
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px; }
+.gallery-grid.three { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+.gallery-sub { font-size: 1.5rem; margin: 48px 0 20px; }
 .cut { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4/5; background: var(--panel); }
 .cut img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform .6s; }
 .cut:hover img { transform: scale(1.12); }
@@ -268,7 +301,8 @@ footer .social a:hover { background: rgba(212,175,55,.12); }
 .app-page .back:hover { color: var(--gold-light); }
 
 @media (max-width: 960px) {
-  .about-grid, .reel { grid-template-columns: 1fr; }
+  .about-grid, .reel, .barber-card { grid-template-columns: 1fr; }
+  .barber-photo { max-width: 360px; margin-inline: auto; }
   .portrait { max-width: 440px; margin-inline: auto; }
   .gallery-grid, .review-grid { grid-template-columns: repeat(2, 1fr); }
   .visit-grid { grid-template-columns: 1fr 1fr; }
@@ -294,6 +328,10 @@ footer .social a:hover { background: rgba(212,175,55,.12); }
   .visit-grid, .review-grid { grid-template-columns: 1fr; }
   .checks { grid-template-columns: 1fr; }
   .gallery-grid { gap: 10px; }
+  .gallery-grid.three { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid.three .cut:last-child { grid-column: 1 / -1; aspect-ratio: 4/3; }
+  .mini-hours { gap: 4px; }
+  .mini-hours li { padding: 6px 2px; font-size: .62rem; }
   .cut figcaption { padding: 40px 12px 12px; }
   .cut figcaption strong { font-size: .9rem; }
   .badge { left: 8px; }

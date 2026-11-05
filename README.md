@@ -30,7 +30,8 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   ```
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
 - **Reviews:** update `"rating"` and `"reviewCount"` from theCut, and add new entries to the top of `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
-- **Prices:** edit `"services"`.
+- **Prices:** Tony's are in `"services"`. Other barbers' prices are in their entry under `"barbers"`.
+- **Other barbers:** each entry in `"barbers"` has its own hours, booking link and services. Endless Cutzz books through Booksy; his photos are in `assets/endless/`.
 
 The open/closed status, today's highlighted hours and review ages are calculated in Eastern time and refresh every 30 seconds while the page is open.
 

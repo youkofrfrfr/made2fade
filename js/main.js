@@ -61,22 +61,60 @@ function renderStatic(shop) {
     if (url) el.href = url;
   });
 
-  const services = $('#priceList');
-  if (services && shop.services?.length) {
-    services.innerHTML = shop.services.map(s => {
-      const time = s.minutes >= 60 ? `${s.minutes / 60} hr${s.minutes >= 120 ? 's' : ''}` : `${s.minutes} min`;
-      return `<li>
-        <div class="price-row"><span class="name">${esc(s.name)}</span><span class="dots"></span><span class="price">$${s.price}</span></div>
-        <div class="price-meta">${time}${s.note ? ' · ' + esc(s.note) : ''}</div>
-      </li>`;
-    }).join('');
-  }
+  $$('[data-barber-link]').forEach(el => {
+    const b = barber(shop, el.dataset.barberLink);
+    if (b?.booking) el.href = b.booking;
+  });
+
+  const selected = $('#priceTabs [aria-selected="true"]')?.dataset.barber || 'tony';
+  renderPrices(shop, selected);
 
   // Highlight the store button for the visitor's phone
   const p = platform();
   if (p !== 'other') $(`.store-btn[data-store="${p}"]`)?.classList.add('highlight');
 
   renderQr(shop);
+}
+
+const barber = (shop, id) => (shop.barbers || []).find(b => b.id === id);
+
+// Tony's services live at the top level of shop.json; other barbers under "barbers".
+function renderPrices(shop, id) {
+  const list = $('#priceList');
+  const services = id === 'tony' ? shop.services : barber(shop, id)?.services;
+  if (!list || !services?.length) return;
+  list.innerHTML = services.map(s => {
+    const time = s.minutes >= 60 ? `${s.minutes / 60} hr${s.minutes >= 120 ? 's' : ''}` : `${s.minutes} min`;
+    return `<li>
+      <div class="price-row"><span class="name">${esc(s.name)}</span><span class="dots"></span><span class="price">$${s.price}</span></div>
+      <div class="price-meta">${time}${s.note ? ' · ' + esc(s.note) : ''}</div>
+    </li>`;
+  }).join('');
+}
+
+$$('#priceTabs button').forEach(btn => btn.addEventListener('click', () => {
+  $$('#priceTabs button').forEach(b => b.setAttribute('aria-selected', b === btn));
+  if (shop) renderPrices(shop, btn.dataset.barber);
+}));
+
+function renderBarber(shop, id) {
+  const b = barber(shop, id);
+  if (!b) return;
+  const status = openStatus({ ...shop, hours: b.hours });
+  const dot = $(`#${id}Dot`);
+  dot.classList.toggle('open', status.state === 'open');
+  dot.classList.toggle('soon', status.state === 'soon');
+  $(`#${id}Status`).textContent = status.label.replace('Open now', 'In the shop now');
+
+  const todayDow = shopDay(shopNow(shop.timezone)).dow;
+  $(`#${id}Hours`).innerHTML = [1, 2, 3, 4, 5, 6, 0].map(dow => {
+    const h = b.hours[DAYS[dow]];
+    const name = DAYS[dow].slice(0, 3);
+    // Compact form for the small day tiles, e.g. "8:30a–6p"
+    const short = t => formatTime(t).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p');
+    return `<li class="${h ? '' : 'off'} ${dow === todayDow ? 'today' : ''}"><span>${name[0].toUpperCase() + name.slice(1)}</span><span>${h ? `${short(h[0])}–${short(h[1])}` : 'Off'}</span></li>`;
+  }).join('');
+  $(`#${id}Note`).textContent = b.hoursNote || '';
 }
 
 // Anything that depends on the current time. Re-run every 30 seconds.
@@ -122,6 +160,8 @@ function renderLive(shop) {
       </article>`;
     }).join('');
   }
+
+  renderBarber(shop, 'endless');
 
   $('#year').textContent = now.y;
 }

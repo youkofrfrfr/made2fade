@@ -26,7 +26,7 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="navLinks">
-      <a href="#about">The Barber</a>
+      <a href="#about">Barbers</a>
       <a href="#services">Services</a>
       <a href="#cuts">The Cuts</a>
       <a href="#reviews">Reviews</a>
@@ -92,6 +92,31 @@
   </div>
 </section>
 
+<section class="team" id="endless">
+  <div class="wrap barber-card reveal">
+    <div class="barber-photo">
+      <img src="/assets/endless/logo.jpg" alt="Endless Cutzz logo and barber photos">
+    </div>
+    <div class="barber-info">
+      <span class="eyebrow">Also In The Shop</span>
+      <h2 class="gold-text">Endless Cutzz</h2>
+      <div class="title">Barber &nbsp;|&nbsp; Walk-ins Welcome</div>
+      <p class="motto">"It's more than a haircut, it's a lifestyle."</p>
+      <p>A newer barber building his brand out of Made2Fade, bringing hustle and care to every cut. Walk in or book ahead on Booksy. Every Sunday, military cuts are $25 for active duty and veterans.</p>
+      <div class="barber-status"><i class="status-dot" id="endlessDot"></i><b id="endlessStatus">Thu–Sat &amp; Sun</b></div>
+      <ul class="mini-hours" id="endlessHours"></ul>
+      <p class="hours-note" id="endlessNote"></p>
+      <div class="hero-ctas left-ctas">
+        <a href="https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford" data-barber-link="endless" target="_blank" rel="noopener" class="btn btn-gold">Book on Booksy</a>
+        <a href="https://www.instagram.com/Endless_Cutzz/" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          @Endless_Cutzz
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="services center" id="services">
   <div class="wrap">
     <span class="eyebrow">What We Do</span>
@@ -132,6 +157,10 @@
 
     <div class="price-menu reveal">
       <h3>Price <span class="gold-text">Menu</span></h3>
+      <div class="tabs" role="tablist" id="priceTabs">
+        <button role="tab" aria-selected="true" data-barber="tony">Tony Fuller</button>
+        <button role="tab" aria-selected="false" data-barber="endless">Endless Cutzz</button>
+      </div>
       <ul class="price-list" id="priceList">
         <li><div class="price-row"><span class="name">Adult Fade</span><span class="dots"></span><span class="price">$45</span></div></li>
         <li><div class="price-row"><span class="name">Child Cut</span><span class="dots"></span><span class="price">$35</span></div></li>
@@ -162,6 +191,21 @@
       <figure class="cut reveal">
         <img src="/assets/cut-skin-fade.jpg" alt="Skin fade with sharp lineup and textured top" loading="lazy">
         <figcaption><strong>Skin Fade &amp; Lineup</strong><span>Crisp Edges</span></figcaption>
+      </figure>
+    </div>
+    <h3 class="gallery-sub">From <span class="gold-text">Endless Cutzz</span></h3>
+    <div class="gallery-grid three">
+      <figure class="cut reveal">
+        <img src="/assets/endless/fade-1.jpg" alt="Low fade with sharp lineup and full beard" loading="lazy">
+        <figcaption><strong>Fade &amp; Full Beard</strong><span>By Endless Cutzz</span></figcaption>
+      </figure>
+      <figure class="cut reveal">
+        <img src="/assets/endless/fade-2.jpg" alt="Waves with a clean taper" loading="lazy">
+        <figcaption><strong>Waves &amp; Taper</strong><span>By Endless Cutzz</span></figcaption>
+      </figure>
+      <figure class="cut reveal">
+        <img src="/assets/endless/fade-3.jpg" alt="Short cut with a bald fade" loading="lazy">
+        <figcaption><strong>Bald Fade</strong><span>By Endless Cutzz</span></figcaption>
       </figure>
     </div>
     <div class="reel">
@@ -265,7 +309,8 @@
     <h2 class="gold-text">Book Your Appointment Today</h2>
     <p>Skip the wait. Lock in your time on theCut app and walk in ready to get right.</p>
     <div class="hero-ctas">
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Book on theCut</a>
+      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Book with Tony</a>
+      <a href="https://booksy.com/en-us/1802230_endless-cutzz-made2fade_barber-shop_105804_stafford" data-barber-link="endless" target="_blank" rel="noopener" class="btn btn-gold">Book with Endless Cutzz</a>
       <a href="tel:+15406028192" data-tel class="btn btn-ghost">Call The Shop</a>
     </div>
   </div>
