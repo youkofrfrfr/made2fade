@@ -1,0 +1,56 @@
+{
+  "name": "Made2Fade Barbershop",
+  "barber": "Tony Fuller",
+  "phone": "(540) 602-8192",
+  "address": {
+    "line1": "60 Susa Dr., Suite 111",
+    "city": "Stafford",
+    "state": "VA",
+    "zip": "22554"
+  },
+  "timezone": "America/New_York",
+  "hours": {
+    "monday": ["08:00", "18:00"],
+    "tuesday": ["08:00", "18:00"],
+    "wednesday": ["08:00", "18:00"],
+    "thursday": ["08:00", "18:00"],
+    "friday": ["08:00", "18:00"],
+    "saturday": ["07:00", "16:00"],
+    "sunday": null
+  },
+  "closures": [],
+  "links": {
+    "booking": "https://book.thecut.co/tonyfuller",
+    "reviews": "https://app.thecut.co/barbers/tonyfuller",
+    "instagram": "https://www.instagram.com/made2fade_llc",
+    "appStore": "https://apps.apple.com/us/app/thecut-find-book-barbers/id1101408626",
+    "googlePlay": "https://play.google.com/store/apps/details?id=com.thecut.mobile.android.thecut"
+  },
+  "rating": 5.0,
+  "reviewCount": 234,
+  "reviews": [
+    { "name": "Kiandre S.", "stars": 5, "date": "2026-11-05" },
+    { "name": "Floyd", "stars": 5, "date": "2026-11-04" },
+    { "name": "Jacob V.", "stars": 5, "date": "2026-10-29" },
+    { "name": "Victor V.", "stars": 5, "date": "2026-10-29" },
+    { "name": "Travis S.", "stars": 5, "date": "2026-10-22" },
+    { "name": "Brandon G.", "stars": 5, "date": "2026-10-22" },
+    { "name": "Jacob C.", "stars": 5, "date": "2026-10-15" },
+    { "name": "Jason G.", "stars": 5, "date": "2026-10-15" }
+  ],
+  "services": [
+    { "name": "Adult Fade", "price": 45, "minutes": 30, "note": "Ages 13 and up" },
+    { "name": "Child Cut", "price": 35, "minutes": 30, "note": "Ages 12 and under" },
+    { "name": "Adult Cut & Beard Trim", "price": 50, "minutes": 30 },
+    { "name": "Adult Cut + Beard + Razor", "price": 55, "minutes": 40 },
+    { "name": "Cut, Beard, Enhancements & Razor", "price": 60, "minutes": 45 },
+    { "name": "Line Up", "price": 25, "minutes": 15, "note": "Line up only" },
+    { "name": "Head & Beard Line Up", "price": 30, "minutes": 30 },
+    { "name": "Head & Beard Line Up with Razor", "price": 35, "minutes": 30 },
+    { "name": "Beard Trim", "price": 25, "minutes": 15 },
+    { "name": "Beard Trim, Razor & Enhancements", "price": 35, "minutes": 30 },
+    { "name": "Eyebrows", "price": 15, "minutes": 15 },
+    { "name": "Hair Wash", "price": 10, "minutes": 15 },
+    { "name": "Scalp Micropigmentation (SMP)", "price": 1000, "minutes": 480, "note": "Consultation required first. $300 deposit before the appointment." }
+  ]
+}
