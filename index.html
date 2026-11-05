@@ -26,12 +26,12 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="navLinks">
-      <a href="#team">Barbers</a>
+      <a href="/barbers.html">Barbers</a>
       <a href="#services">Services</a>
       <a href="#cuts">The Cuts</a>
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Book Now</a>
+      <a href="/barbers.html" class="btn btn-gold">Book Now</a>
     </nav>
   </div>
 </header>
@@ -43,9 +43,9 @@
     <h1>Barbershop &middot; Stafford, VA</h1>
     <p class="tag gold-text">Precision. Professionalism. Consistency.</p>
     <div class="hero-ctas">
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">
+      <a href="/barbers.html" class="btn btn-gold">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Book Your Appointment
+        Choose Your Barber
       </a>
       <a href="#cuts" class="btn btn-ghost">See The Cuts</a>
     </div>
@@ -81,6 +81,7 @@
       <blockquote>Where precision, professionalism, and consistency come first.</blockquote>
       <p>I'm Tony Fuller, dedicated to delivering quality grooming services and a premium experience for every client who sits in my chair.</p>
       <p>From clean fades and sharp lineups to full transformations, every appointment is focused on detail, style and customer service. Walk in confident, leave legendary.</p>
+      <div class="hero-ctas left-ctas owner-ctas"><a class="btn btn-gold" href="/barber.html?b=tony">Tony's Details</a><a class="btn btn-ghost" href="https://book.thecut.co/tonyfuller" target="_blank" rel="noopener">Book with Tony</a></div>
       <ul class="checks">
         <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Clean Fades</li>
         <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Sharp Lineups</li>
@@ -97,8 +98,9 @@
     <span class="eyebrow">The Made2Fade Team</span>
     <h2>Pick Your <span class="gold-text">Barber</span></h2>
     <div class="divider">✂</div>
-    <p class="team-intro">Every chair at Made2Fade books on its own. Choose your barber, see their cuts and lock in a time.</p>
-    <div class="team-grid" id="teamGrid"></div>
+    <p class="team-intro">Every chair at Made2Fade books on its own. Tap a barber to see their cuts, hours and prices.</p>
+    <div class="team-strip" id="teamStrip"></div>
+    <a href="/barbers.html" class="btn btn-gold">Meet All Barbers</a>
   </div>
 </section>
 
@@ -140,15 +142,10 @@
       </article>
     </div>
 
-    <div class="price-menu reveal">
-      <h3>Price <span class="gold-text">Menu</span></h3>
-      <div class="tabs" role="tablist" id="priceTabs"></div>
-      <ul class="price-list" id="priceList">
-        <li><div class="price-row"><span class="name">Adult Fade</span><span class="dots"></span><span class="price">$45</span></div></li>
-        <li><div class="price-row"><span class="name">Child Cut</span><span class="dots"></span><span class="price">$35</span></div></li>
-      </ul>
-      <div class="center price-cta"><a class="btn btn-gold" id="priceBook" href="https://book.thecut.co/tonyfuller" target="_blank" rel="noopener">Book with Tony</a></div>
-      <p class="price-foot">Cash or credit/debit accepted. Please book the correct service so there's enough time for your appointment.</p>
+    <div class="price-menu reveal center">
+      <h3>Prices By <span class="gold-text">Barber</span></h3>
+      <p class="price-foot">Each barber sets their own prices. Haircuts start around $35–$45, line ups from $25. Open any barber's details for their full price list.</p>
+      <div class="price-cta"><a class="btn btn-gold" href="/barbers.html">See Barbers &amp; Prices</a></div>
     </div>
   </div>
 </section>
@@ -158,9 +155,8 @@
     <span class="eyebrow">The Portfolio</span>
     <h2>Fresh <span class="gold-text">Cuts</span></h2>
     <div class="divider">✂</div>
-    <div class="tabs" role="tablist" id="cutTabs"></div>
-    <div class="gallery-grid" id="cutGrid"></div>
-    <button class="btn btn-ghost more-cuts" id="moreCuts" hidden>Show More Cuts</button>
+    <div class="gallery-grid five" id="cutGrid"></div>
+    <a href="/barbers.html" class="btn btn-ghost more-cuts">See Every Barber's Cuts</a>
     <div class="reel">
       <video src="/assets/showcase.mp4" controls muted loop playsinline preload="metadata" aria-label="Made2Fade cut showcase video"></video>
       <div class="reel-copy reveal left">
@@ -213,7 +209,7 @@
           <span><small>Get it on</small><strong>Google Play</strong></span>
         </a>
       </div>
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Or Book Online Now</a>
+      <a href="/barbers.html" class="btn btn-gold">Or Pick Your Barber Online</a>
     </div>
   </div>
 </section>
@@ -244,8 +240,8 @@
           <a href="tel:+15406028192" data-phone>(540) 602-8192</a>
         </div>
         <div class="contact-item">
-          <small>Book Online</small>
-          <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener">theCut App →</a>
+          <small>Book</small>
+          <a href="/barbers.html">Choose a barber →</a>
         </div>
       </div>
       <div class="card map reveal">
@@ -262,8 +258,8 @@
     <h2 class="gold-text">Book Your Appointment Today</h2>
     <p>Skip the wait. Lock in your time on theCut app and walk in ready to get right.</p>
     <div class="hero-ctas">
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" class="btn btn-gold">Book with Tony</a>
-      <a href="#team" class="btn btn-ghost">Choose Another Barber</a>
+      <a href="/barbers.html" class="btn btn-gold">Book with Tony</a>
+      <a href="tel:+15406028192" data-tel class="btn btn-ghost">Call The Shop</a>
       <a href="tel:+15406028192" data-tel class="btn btn-ghost">Call The Shop</a>
     </div>
   </div>
@@ -276,7 +272,7 @@
     <div class="social">
       <a href="https://www.instagram.com/made2fade_llc" data-link="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
       <a href="tel:+15406028192" data-tel aria-label="Call"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
-      <a href="https://book.thecut.co/tonyfuller" data-link="booking" target="_blank" rel="noopener" aria-label="Book on theCut"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></a>
+      <a href="/barbers.html" aria-label="Choose a barber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></a>
     </div>
   </div>
 </footer>

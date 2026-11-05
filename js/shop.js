@@ -7,7 +7,10 @@ export async function loadShop() {
   // no-cache so edits to shop.json show up as soon as they are deployed
   const res = await fetch('/data/shop.json', { cache: 'no-cache' });
   if (!res.ok) throw new Error('Could not load shop data');
-  return res.json();
+  const shop = await res.json();
+  // "hidden": true keeps a barber in the file without showing them on the site
+  shop.barbers = shop.barbers.filter(b => !b.hidden);
+  return shop;
 }
 
 // Current date/time at the shop, independent of the visitor's timezone.

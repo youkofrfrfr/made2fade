@@ -19,7 +19,7 @@
   },
   "closures": [],
   "links": {
-    "booking": "https://book.thecut.co/tonyfuller",
+    "booking": "/barbers.html",
     "reviews": "https://app.thecut.co/barbers/tonyfuller",
     "instagram": "https://www.instagram.com/made2fade_llc",
     "appStore": "https://apps.apple.com/us/app/thecut-find-book-barbers/id1101408626",
@@ -201,6 +201,8 @@
     },
     {
       "id": "cera",
+      "hidden": true,
+      "hiddenReason": "Listed the shop address on theCut in Oct 2026 but has no reviews or photos yet. Unhide once confirmed.",
       "name": "Cera Addi",
       "title": "Braider",
       "bio": "Natural-hair braids and cornrows. Shampoo, condition and blow dry included. New to Made2Fade.",

@@ -6,10 +6,15 @@ Static site, no build step.
 
 ```
 index.html          Home page
-app.html            /app page the QR code points to (app store + booking links)
+barbers.html        /barbers: every barber with Details and Book buttons (all Book Now buttons land here)
+barber.html         /barber?b=<id>: one barber's hours, prices, booking links, cuts and reviews
+app.html            /app page the QR code points to (app store + barbers page)
 css/styles.css      All styles
 js/shop.js          Shared helpers: load data, shop-time math, open/closed status
-js/main.js          Home page: renders hours, status, reviews, prices, QR code
+js/ui.js            Shared page pieces: nav, barber cards, cut tiles, price lists
+js/main.js          Home page: hours, status, team preview, mixed cuts, reviews, QR code
+js/barbers.js       Barbers page
+js/barber.js        Barber profile page
 js/app.js           /app page: shows the visitor's app store first
 js/vendor/          QR code generator (qrcode-generator 1.4.4)
 data/shop.json      Hours, closures, phone, links, rating, reviews and prices
@@ -31,6 +36,7 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
 - **Ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
 - **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Tony stays first since he has the owner section. Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
+- **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page (Cera Addi is hidden until she's confirmed).
 - **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put photos in `assets/cuts/<id>/`. The team cards, gallery filters and price tabs pick it up automatically.
 - **Reviews:** the recent reviews list in `"reviews"` takes a `"barber"` id so each one shows who it was for.
 
