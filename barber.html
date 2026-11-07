@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Barber | Made2Fade Barbershop</title>
 <meta name="description" content="Barber profile at Made2Fade Barbershop in Stafford, VA: cuts, hours, prices and booking.">
 <meta name="theme-color" content="#0a0a0a">
@@ -13,24 +13,7 @@
 <link rel="stylesheet" href="/css/styles.css">
 <script src="/js/barber.js" type="module"></script>
 </head>
-<body>
-
-<header class="nav scrolled" id="nav">
-  <div class="wrap">
-    <a href="/" class="brand"><img src="/assets/logo.jpg" alt=""><span class="gold-text">MADE2FADE</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <nav class="nav-links" id="navLinks">
-      <a href="/barbers.html">Barbers</a>
-      <a href="/#services">Services</a>
-      <a href="/#cuts">The Cuts</a>
-      <a href="/#reviews">Reviews</a>
-      <a href="/#visit">Visit</a>
-      <a href="/barbers.html" class="btn btn-gold">Book Now</a>
-    </nav>
-  </div>
-</header>
+<body data-page="barbers">
 
 <main id="profile">
   <section class="page-hero">
@@ -52,56 +35,38 @@
     </div>
   </section>
 
-  <section class="profile-grid-section">
-    <div class="wrap profile-grid">
-      <div class="card">
-        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Hours</h3>
-        <ul class="hours" id="pHours"></ul>
-        <p class="hours-note" id="pHoursNote"></p>
+  <section class="page-body profile-body">
+    <div class="wrap">
+      <div class="tabs profile-tabs" role="tablist" id="pTabs">
+        <button role="tab" aria-selected="true" aria-controls="tab-cuts" data-tab="cuts">Cuts</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-prices" data-tab="prices">Prices</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-hours" data-tab="hours">Hours</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-reviews" data-tab="reviews" id="pReviewsTab">Reviews</button>
       </div>
-      <div class="card price-card">
-        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Prices</h3>
+
+      <div class="tab-panel" id="tab-cuts" role="tabpanel">
+        <div class="gallery-grid" id="pCuts"></div>
+        <p class="empty-note" id="pNoCuts" hidden>No photos posted yet. Check back soon.</p>
+      </div>
+
+      <div class="tab-panel card" id="tab-prices" role="tabpanel" hidden>
         <ul class="price-list one-col" id="pPrices"></ul>
         <p class="price-foot">Cash or card accepted at the shop. Book the right service so there's enough time for your appointment.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="center" id="cuts">
-    <div class="wrap">
-      <h2><span id="pCutsName">Their</span> <span class="gold-text">Cuts</span></h2>
-      <div class="divider">✂</div>
-      <div class="gallery-grid" id="pCuts"></div>
-      <p class="empty-note" id="pNoCuts" hidden>No photos posted yet. Check back soon.</p>
-    </div>
-  </section>
+      <div class="tab-panel card" id="tab-hours" role="tabpanel" hidden>
+        <ul class="hours" id="pHours"></ul>
+        <p class="hours-note" id="pHoursNote"></p>
+        <p class="hours-note">60 Susa Dr., Suite 111, Stafford, VA 22554 · <a href="https://www.google.com/maps/dir/?api=1&destination=60+Susa+Drive%2C+Stafford%2C+VA+22554" target="_blank" rel="noopener">Directions</a></p>
+      </div>
 
-  <section class="reviews center" id="pReviewsSection" hidden>
-    <div class="wrap">
-      <h2>Recent <span class="gold-text">Reviews</span></h2>
-      <div class="divider">✂</div>
-      <div class="review-grid" id="pReviews"></div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="gold-text" id="pCtaTitle">Book Your Appointment</h2>
-      <p>60 Susa Dr., Suite 111, Stafford, VA 22554</p>
-      <div class="hero-ctas" id="pCta"></div>
+      <div class="tab-panel" id="tab-reviews" role="tabpanel" hidden>
+        <div class="review-grid" id="pReviews"></div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <a href="/" class="brand"><img src="/assets/logo.jpg" alt=""><span class="gold-text">MADE2FADE</span></a>
-    <p>© <span id="year">2026</span> Made2Fade Barbershop LLC · 60 Susa Dr., Suite 111, Stafford, VA · <a href="tel:+15406028192" data-phone>(540) 602-8192</a></p>
-    <div class="social">
-      <a href="https://www.instagram.com/made2fade_llc" data-link="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>

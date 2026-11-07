@@ -19,28 +19,6 @@ export const ICONS = {
   tiktok: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>',
 };
 
-// ---------- Page chrome ----------
-
-export function initChrome() {
-  const nav = $('#nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  const menuBtn = $('#menuBtn');
-  const links = $('#navLinks');
-  menuBtn.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    nav.classList.toggle('menu-open', open);
-    menuBtn.setAttribute('aria-expanded', open);
-  });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    nav.classList.remove('menu-open');
-    menuBtn.setAttribute('aria-expanded', false);
-  }));
-}
-
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: 0.12 });
@@ -57,8 +35,6 @@ export function fillShopLinks(shop) {
     const url = shop.links[el.dataset.link];
     if (url) el.href = url;
   });
-  const year = $('#year');
-  if (year) year.textContent = shopNow(shop.timezone).y;
 }
 
 // ---------- Barbers ----------
@@ -70,6 +46,15 @@ export function barberStatus(shop, b) {
   // Only barbers with their own published hours get a personal "in the shop" status
   if (!b.hours) return { ...status, label: 'Shop ' + status.label.replace('Open now', 'open').replace(/^C/, 'c') };
   return { ...status, label: status.label.replace('Open now', 'In the shop now') };
+}
+
+// Cuts for one barber or everyone (interleaved), each paired with its barber
+export function cutsFor(shop, id) {
+  if (id && id !== 'all') {
+    const b = findBarber(shop, id);
+    return b.cuts.map(c => ({ c, b }));
+  }
+  return mixedCuts(shop, Math.max(...shop.barbers.map(b => b.cuts.length)));
 }
 
 export function ratingHtml(b) {

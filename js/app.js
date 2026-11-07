@@ -1,26 +1,31 @@
-// /app landing page (where the QR code points): put the visitor's own app store first.
+// /app: theCut download buttons (visitor's store first) and a QR code that opens this page on a phone.
 import { loadShop, platform } from './shop.js';
+import { $, fillShopLinks } from './ui.js';
+import { mountLayout } from './layout.js';
 
-const stack = document.getElementById('stack');
-const ios = stack.querySelector('[data-store="ios"]');
-const android = stack.querySelector('[data-store="android"]');
-const booking = stack.querySelector('[data-booking]');
+mountLayout();
 
 const p = platform();
-if (p === 'ios') {
-  ios.classList.add('highlight');
-  android.remove();
-} else if (p === 'android') {
-  android.classList.add('highlight');
-  stack.prepend(android);
-  ios.remove();
+if (p !== 'other') $(`.store-btn[data-store="${p}"]`)?.classList.add('highlight');
+
+// QR points at this page, so scanning from a computer opens it on a phone
+function renderQr() {
+  const box = $('#qr');
+  if (!box || typeof qrcode !== 'function') return;
+  const target = new URL('/app', location.origin).href;
+  const qr = qrcode(0, 'M');
+  qr.addData(target);
+  qr.make();
+  box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true, alt: `QR code: ${target}` });
+  box.dataset.target = target;
 }
 
+// The QR library loads with defer, so wait for it before drawing
+if (document.readyState === 'complete') renderQr();
+else window.addEventListener('load', renderQr);
+
 try {
-  const shop = await loadShop();
-  ios.href = shop.links.appStore;
-  android.href = shop.links.googlePlay;
-  booking.href = shop.links.booking;
+  fillShopLinks(await loadShop());
 } catch (err) {
   console.warn(err);
 }

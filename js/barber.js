@@ -1,11 +1,12 @@
 // /barber?b=<id>: one barber's details (hours, prices, booking, cuts, reviews).
 import { loadShop, timeAgo, stars } from './shop.js';
 import {
-  $, esc, initials, shortName, findBarber, initChrome, observeReveals, fillShopLinks,
+  $, esc, initials, shortName, findBarber, observeReveals, fillShopLinks,
   barberHours, barberStatus, ratingHtml, socialHtml, mediaHtml, hoursListHtml, cutHtml, priceListHtml,
 } from './ui.js';
+import { mountLayout } from './layout.js';
 
-initChrome();
+mountLayout();
 
 const id = new URLSearchParams(location.search).get('b');
 
@@ -21,20 +22,17 @@ function render(shop, b) {
   const book = `<a class="btn btn-gold" href="${b.booking}" target="_blank" rel="noopener">Book on ${esc(b.bookingLabel)}</a>`;
   const alt = b.altBooking ? `<a class="btn btn-ghost" href="${b.altBooking}" target="_blank" rel="noopener">Book on ${esc(b.altBookingLabel)}</a>` : '';
   $('#pActions').innerHTML = book + alt + socialHtml(b);
-  $('#pCta').innerHTML = book + alt;
-  $('#pCtaTitle').textContent = `Book with ${shortName(b)}`;
 
   $('#pHoursNote').textContent = b.hours
     ? (b.hoursNote || '')
     : `${shortName(b)} works during shop hours. Open times can vary, so check the booking page for exact availability.`;
   $('#pPrices').innerHTML = priceListHtml(b.services);
 
-  $('#pCutsName').textContent = `${shortName(b)}'s`;
   $('#pCuts').innerHTML = b.cuts.map(c => cutHtml(c, b)).join('');
   $('#pNoCuts').hidden = b.cuts.length > 0;
 
   const reviews = shop.reviews.filter(r => r.barber === b.id).sort((x, y) => y.date.localeCompare(x.date));
-  $('#pReviewsSection').hidden = !reviews.length;
+  $('#pReviewsTab').hidden = !reviews.length;
   $('#pReviews').innerHTML = reviews.map(r => `<article class="review">
     <div class="avatar">${esc(initials(r.name))}</div>
     <div><strong>${esc(r.name)}</strong><div class="stars">${stars(r.stars)}</div>
@@ -45,6 +43,12 @@ function render(shop, b) {
   renderLive(shop, b);
   observeReveals();
 }
+
+// Tabs: Cuts / Prices / Hours / Reviews, one panel at a time
+document.querySelectorAll('#pTabs button').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('#pTabs button').forEach(t => t.setAttribute('aria-selected', t === btn));
+  document.querySelectorAll('.tab-panel').forEach(p => { p.hidden = p.id !== `tab-${btn.dataset.tab}`; });
+}));
 
 // Status and today's highlighted hours depend on the time
 function renderLive(shop, b) {
