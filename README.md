@@ -39,7 +39,7 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   ]
   ```
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
-- **theCut ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
+- **theCut ratings and reviews:** updated automatically every hour (see below). The site adds the ratings up for the team total.
 - **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
 - **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page (Cera Addi is hidden until she's confirmed).
 - **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put their photo in `assets/barbers/` and cuts in `assets/cuts/<id>/`. The Barbers page, their profile page and the home page mix pick it up automatically.
@@ -60,7 +60,14 @@ Setup (one time, about 10 minutes):
 
 Check it by opening `https://<your-site>/api/reviews`: it should return the rating and reviews as JSON.
 
-theCut has no public way to read reviews, so each barber's theCut rating and the theCut review list still come from `data/shop.json`.
+## theCut ratings and reviews (automatic)
+
+`.github/workflows/update-reviews.yml` runs every hour on GitHub Actions. It opens each barber's public theCut page (the `"thecut"` handle on their entry in `data/shop.json`), reads their rating, review count and 5 newest reviews, and commits any changes to `data/shop.json`. Vercel redeploys on that commit, so the site is never more than about an hour behind theCut.
+
+- Run it now: GitHub → **Actions** → **Update theCut reviews** → **Run workflow**.
+- Each run's log shows one line per barber, e.g. `tony: 5/234 -> 5/239, 239 reviews on page`.
+- If theCut changes its page layout and every barber fails, the run fails and GitHub emails you; the site keeps showing the last good numbers.
+- Reviewer names are shortened to first name + last initial.
 
 ## QR code
 
