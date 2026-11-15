@@ -18,6 +18,8 @@ js/layout.js        Header, full-screen phone menu, footer and phone bottom bar 
 js/shop.js          Load data, shop-time math, open/closed status
 js/ui.js            Shared pieces: barber cards, cut tiles, price lists, hours lists
 js/<page>.js        One script per page (main.js is the home page)
+js/live-reviews.js  Fetches /api/reviews and refreshes it every 5 minutes
+api/reviews.js      Vercel function: live Google rating + latest reviews (Places API)
 js/vendor/          QR code generator (qrcode-generator 1.4.4)
 data/shop.json      Hours, closures, phone, links, barbers (photos, prices, cuts) and reviews
 assets/barbers/     Each barber's profile photo
@@ -37,13 +39,28 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   ]
   ```
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
-- **Ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
+- **theCut ratings:** update each barber's `"rating"` and `"reviewCount"` from theCut. The site adds them up for the team total. Add new entries to `"reviews"` with the date they were left. "Today / 2 weeks ago" labels are worked out automatically.
 - **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
 - **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page (Cera Addi is hidden until she's confirmed).
 - **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put their photo in `assets/barbers/` and cuts in `assets/cuts/<id>/`. The Barbers page, their profile page and the home page mix pick it up automatically.
 - **Reviews:** the recent reviews list in `"reviews"` takes a `"barber"` id so each one shows who it was for.
 
 The open/closed status, today's highlighted hours and review ages are calculated in Eastern time and refresh every 30 seconds while the page is open.
+
+## Live Google reviews
+
+The Reviews page and the home page show the shop's Google rating, review count and latest reviews live. The page refreshes them every 5 minutes, and the server asks Google at most once an hour (cached at Vercel's edge). Until it's set up, the Google section simply stays hidden.
+
+Setup (one time, about 10 minutes):
+
+1. Go to https://console.cloud.google.com, create a project, and enable **Places API (New)**. Google asks for a billing account; this usage (about 24 calls a day) stays within the monthly free allowance.
+2. Under **APIs & Services → Credentials**, create an **API key**. Restrict it to **Places API (New)**.
+3. In Vercel → this project → **Settings → Environment Variables**, add `GOOGLE_PLACES_API_KEY` with that key, then redeploy.
+4. Optional: add `GOOGLE_PLACE_ID` if the wrong business shows up. Without it, the function searches for "Made2Fade Barbershop, 60 Susa Dr, Stafford, VA 22554".
+
+Check it by opening `https://<your-site>/api/reviews`: it should return the rating and reviews as JSON.
+
+theCut has no public way to read reviews, so each barber's theCut rating and the theCut review list still come from `data/shop.json`.
 
 ## QR code
 

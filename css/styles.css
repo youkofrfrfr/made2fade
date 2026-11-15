@@ -598,3 +598,19 @@ footer .social a:hover { background: rgba(212,175,55,.12); }
   .profile-tabs { flex-wrap: nowrap; gap: 6px; }
   .profile-tabs button { flex: 1 1 0; padding: 9px 4px; font-size: .68rem; letter-spacing: .06em; }
 }
+
+/* Live Google reviews */
+.live-head { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 26px; }
+.live-badge { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-light); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: live 2s ease-in-out infinite; }
+@keyframes live { 50% { opacity: .35; } }
+.live-score { display: flex; align-items: center; gap: 16px; text-align: left; }
+.live-score strong { font-family: 'Cinzel', serif; font-size: 3.4rem; line-height: 1; }
+.live-score .stars { display: block; color: var(--gold); letter-spacing: 3px; }
+.live-score small { color: var(--muted); font-size: .8rem; }
+.live-reviews .review img.avatar { object-fit: cover; }
+.review strong a { color: var(--text); }
+.review strong a:hover { color: var(--gold-light); }
+.live-updated { color: var(--muted); font-size: .78rem; margin: 18px 0 14px; }
+.sub-h.first { margin-top: 0; }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }

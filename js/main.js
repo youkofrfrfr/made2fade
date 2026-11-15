@@ -2,6 +2,7 @@
 import { loadShop, shopNow, shopDay, hoursFor, openStatus, formatTime } from './shop.js';
 import { $, $$, esc, initials, profileUrl, observeReveals, fillShopLinks, cutHtml, mixedCuts } from './ui.js';
 import { mountLayout } from './layout.js';
+import { watchLiveReviews } from './live-reviews.js';
 
 mountLayout();
 
@@ -47,6 +48,13 @@ async function refresh() {
     console.warn(err);
   }
 }
+
+// Live Google rating in the hero once the API is set up
+watchLiveReviews(g => {
+  const el = $('#googleHero');
+  el.hidden = false;
+  el.innerHTML = `Google ★ ${g.rating.toFixed(1)} · ${g.reviewCount.toLocaleString('en-US')}`;
+});
 
 await refresh();
 setInterval(() => shop && renderLive(shop), 30 * 1000);

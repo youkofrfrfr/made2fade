@@ -2,6 +2,7 @@
 import { loadShop, timeAgo, stars } from './shop.js';
 import { $, $$, esc, initials, shortName, findBarber, profileUrl, fillShopLinks } from './ui.js';
 import { mountLayout } from './layout.js';
+import { watchLiveReviews } from './live-reviews.js';
 
 mountLayout();
 
@@ -34,6 +35,35 @@ function render(shop) {
     </article>`;
   }).join('');
 }
+
+// Live Google reviews (only shows once the API key is set up on Vercel)
+function renderGoogle(g) {
+  $('#googleSection').hidden = false;
+  $('#googleRating').textContent = g.rating.toFixed(1);
+  $('#googleStars').textContent = stars(g.rating);
+  $('#googleCount').textContent = g.reviewCount.toLocaleString('en-US');
+  $('#googleLink').href = g.url || '#';
+  $('#googleMore').href = g.url || '#';
+  $('#googleReviews').innerHTML = g.reviews.map(r => {
+    const name = r.authorUrl ? `<a href="${esc(r.authorUrl)}" target="_blank" rel="noopener">${esc(r.author)}</a>` : esc(r.author);
+    const avatar = r.authorPhoto
+      ? `<img class="avatar" src="${esc(r.authorPhoto)}" alt="" referrerpolicy="no-referrer" loading="lazy">`
+      : `<div class="avatar">${esc(initials(r.author))}</div>`;
+    const text = r.text.length > 220 ? r.text.slice(0, 217).trimEnd() + '…' : r.text;
+    return `<article class="review">
+      ${avatar}
+      <div>
+        <strong>${name}</strong><div class="stars">${stars(r.stars)}</div>
+        ${text ? `<q>${esc(text)}</q>` : ''}
+        <time datetime="${esc(r.date || '')}">${esc(r.when || '')} · Google</time>
+      </div>
+    </article>`;
+  }).join('');
+  const t = new Date(g.fetchedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  $('#googleUpdated').textContent = `Updated ${t} · refreshes automatically`;
+}
+
+watchLiveReviews(renderGoogle);
 
 try {
   const shop = await loadShop();
