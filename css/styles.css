@@ -614,3 +614,12 @@ footer .social a:hover { background: rgba(212,175,55,.12); }
 .live-updated { color: var(--muted); font-size: .78rem; margin: 18px 0 14px; }
 .sub-h.first { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
+/* Role tag (e.g. Braider) */
+.role-tag {
+  display: inline-block; vertical-align: middle; margin-left: 6px; padding: 2px 9px; border-radius: 999px;
+  background: var(--gold-grad); color: #111; font-family: 'Montserrat', sans-serif; font-size: .58rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; line-height: 1.6;
+}
+.strip-item .role-tag { margin: 0; }
+.role-tag.big { margin: 0 0 6px; font-size: .68rem; padding: 3px 12px; }

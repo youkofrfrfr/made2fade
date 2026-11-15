@@ -16,12 +16,14 @@ function render(shop, b) {
   $('#pName').textContent = b.name;
   $('#pNick').textContent = b.nickname ? `"${b.nickname}"` : '';
   $('#pTitle').textContent = b.title;
+  $('#pName').insertAdjacentHTML('afterend', b.role ? `<span class="role-tag big">${esc(b.role)}</span>` : '');
   $('#pRating').innerHTML = ratingHtml(b);
   $('#pBio').textContent = b.bio;
 
   const book = `<a class="btn btn-gold" href="${b.booking}" target="_blank" rel="noopener">Book on ${esc(b.bookingLabel)}</a>`;
   const alt = b.altBooking ? `<a class="btn btn-ghost" href="${b.altBooking}" target="_blank" rel="noopener">Book on ${esc(b.altBookingLabel)}</a>` : '';
-  $('#pActions').innerHTML = book + alt + socialHtml(b);
+  const call = b.phone ? `<a class="btn btn-ghost" href="tel:+1${b.phone.replace(/\D/g, '')}">Call ${esc(shortName(b))}</a>` : '';
+  $('#pActions').innerHTML = book + alt + call + socialHtml(b);
 
   $('#pHoursNote').textContent = b.hours
     ? (b.hoursNote || '')

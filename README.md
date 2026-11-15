@@ -41,7 +41,8 @@ Everything that changes lives in `data/shop.json`. Edit it on GitHub, commit, an
   The site shows a notice two weeks ahead and the open/closed status follows it on the day.
 - **theCut ratings and reviews:** updated automatically every hour (see below). The site adds the ratings up for the team total.
 - **Barbers:** everyone is in `"barbers"`: name, title, bio, rating, review count, booking link, social links, services (prices) and cuts (photos). Add `"hours"` to a barber to show his weekly schedule and live in-shop status on his card.
-- **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page (Cera Addi is hidden until she's confirmed).
+- **Braiders and other roles:** add `"role": "Braider"` to show a gold tag next to their name. They stay on the Barbers page with everyone else. Add `"phone"` to show a Call button on their profile.
+- **Hiding a barber:** set `"hidden": true` on their entry. They stay in the file but disappear from every page.
 - **Adding a barber:** copy an entry in `"barbers"`, give it a new `"id"`, and put their photo in `assets/barbers/` and cuts in `assets/cuts/<id>/`. The Barbers page, their profile page and the home page mix pick it up automatically.
 - **Reviews:** the recent reviews list in `"reviews"` takes a `"barber"` id so each one shows who it was for.
 
@@ -68,6 +69,7 @@ Check it by opening `https://<your-site>/api/reviews`: it should return the rati
 - Each run's log shows one line per barber, e.g. `tony: 5/234 -> 5/239, 239 reviews on page`.
 - If theCut changes its page layout and every barber fails, the run fails and GitHub emails you; the site keeps showing the last good numbers.
 - Reviewer names are shortened to first name + last initial.
+- Cera books on Booksy, so her rating and reviews come from Booksy and are updated by hand in `data/shop.json`. The hourly job leaves them alone while her theCut page has no reviews.
 
 ## QR code
 

@@ -18,7 +18,7 @@ function renderStatic(shop) {
   $('#teamStrip').innerHTML = shop.barbers.map(b => `
     <a class="strip-item" href="${profileUrl(b)}">
       <span class="strip-photo">${b.photo ? `<img src="${b.photo}" alt="" loading="lazy">` : initials(b.name)}</span>
-      <strong>${esc(b.name)}</strong>
+      <strong>${esc(b.name)}</strong>${b.role ? `<span class="role-tag">${esc(b.role)}</span>` : ''}
       <small>${b.reviewCount ? `★ ${b.rating.toFixed(1)} · ${b.reviewCount}` : 'New'}</small>
     </a>`).join('');
 

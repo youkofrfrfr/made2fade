@@ -52,10 +52,38 @@
       "text": "Excellent cut."
     },
     {
+      "name": "Anisé",
+      "stars": 5,
+      "date": "2026-11-13",
+      "barber": "cera",
+      "text": "Cera makes you feel comfortable, and is GREAT with the kiddos"
+    },
+    {
+      "name": "James W.",
+      "stars": 5,
+      "date": "2026-11-13",
+      "barber": "cera",
+      "text": "Great atmosphere whenever I'm using Cera's services."
+    },
+    {
       "name": "Chudi M.",
       "stars": 5,
       "date": "2026-11-12",
       "barber": "tony"
+    },
+    {
+      "name": "Donnette",
+      "stars": 5,
+      "date": "2026-11-12",
+      "barber": "cera",
+      "text": "Cera has been doing my hair for 23 years. Her focus has always been on the health of my hair."
+    },
+    {
+      "name": "Kaye",
+      "stars": 5,
+      "date": "2026-11-12",
+      "barber": "cera",
+      "text": "She's been reliable when it comes to booking appointments"
     },
     {
       "name": "Flaco",
@@ -705,20 +733,186 @@
     {
       "id": "cera",
       "thecut": "Cera-Addi-ca1cfzs",
-      "hidden": true,
-      "hiddenReason": "Listed the shop address on theCut in Oct 2026 but has no reviews or photos yet. Unhide once confirmed.",
       "name": "Cera Addi",
-      "title": "Braider",
-      "bio": "Natural-hair braids and cornrows. Shampoo, condition and blow dry included. New to Made2Fade.",
-      "booking": "https://app.thecut.co/barbers/Cera-Addi-ca1cfzs",
-      "bookingLabel": "theCut",
-      "cuts": [],
+      "nickname": "Flair",
+      "short": "Cera",
+      "role": "Braider",
+      "title": "Braider · Loc Specialist",
+      "photo": "/assets/barbers/cera.jpg",
+      "bio": "Creative braids, cornrows, knotless, twists and loc care for kids and adults. Clients have trusted her with their hair for over 20 years.",
+      "rating": 5.0,
+      "reviewCount": 7,
+      "phone": "(202) 553-6355",
+      "booking": "https://booksy.com/en-us/1897364_cera-flair-addi_braids-locs_105804_stafford",
+      "bookingLabel": "Booksy",
+      "altBooking": "https://app.thecut.co/barbers/Cera-Addi-ca1cfzs",
+      "altBookingLabel": "theCut",
+      "social": {
+        "instagram": "https://www.instagram.com/cera_f_addi/"
+      },
+      "hours": {
+        "monday": [
+          "09:00",
+          "18:00"
+        ],
+        "tuesday": [
+          "09:00",
+          "18:00"
+        ],
+        "wednesday": [
+          "09:00",
+          "18:00"
+        ],
+        "thursday": [
+          "09:00",
+          "18:00"
+        ],
+        "friday": [
+          "09:00",
+          "18:00"
+        ],
+        "saturday": null,
+        "sunday": null
+      },
+      "hoursNote": "Sundays by appointment only. See Booksy for exact open times.",
+      "cuts": [
+        {
+          "src": "/assets/cuts/cera/01.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/02.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/03.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/04.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/05.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/06.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/07.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/08.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/09.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/10.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/11.jpg"
+        },
+        {
+          "src": "/assets/cuts/cera/12.jpg"
+        }
+      ],
       "services": [
         {
-          "name": "Braids (2–10 Cornrows)",
+          "name": "Cornrows (2–10)",
+          "price": 75,
+          "minutes": 75
+        },
+        {
+          "name": "Cornrows (12 or more)",
+          "price": 120,
+          "minutes": 120,
+          "note": "Small cornrows, straight backs or designs. Starting price"
+        },
+        {
+          "name": "Kids Styles (2–10 braids or twists)",
           "price": 75,
           "minutes": 90,
-          "note": "Natural hair, no extensions. Shampoo, condition and blow dry included."
+          "note": "Shampoo, conditioner & blow dry included"
+        },
+        {
+          "name": "Kids Styles (12–20 braids or twists)",
+          "price": 100,
+          "minutes": 150,
+          "note": "Shampoo, conditioner & blow dry included"
+        },
+        {
+          "name": "Box Braids / Plaits",
+          "price": 90,
+          "minutes": 90,
+          "note": "Starting price, typically $90–180 by size"
+        },
+        {
+          "name": "Two-Strand Twists",
+          "price": 90,
+          "minutes": 90,
+          "note": "Starting price"
+        },
+        {
+          "name": "Feed-In Cornrows",
+          "price": 180,
+          "minutes": 180
+        },
+        {
+          "name": "Jumbo Knotless Braids",
+          "price": 120,
+          "minutes": 120
+        },
+        {
+          "name": "Medium Knotless Braids",
+          "price": 240,
+          "minutes": 240
+        },
+        {
+          "name": "Small Knotless Braids",
+          "price": 360,
+          "minutes": 360
+        },
+        {
+          "name": "Fulani or Lemonade Braids",
+          "price": 240,
+          "minutes": 240
+        },
+        {
+          "name": "Faux or Butterfly Locs",
+          "price": 240,
+          "minutes": 240
+        },
+        {
+          "name": "Starter Locs",
+          "price": 120,
+          "minutes": 120,
+          "note": "Starting price. Free loc consultation available"
+        },
+        {
+          "name": "Loc Maintenance (1 hr)",
+          "price": 75,
+          "minutes": 75,
+          "note": "Longer sessions available up to 4 hrs"
+        },
+        {
+          "name": "Loc Repair or Reattachment",
+          "price": 60,
+          "minutes": 60
+        },
+        {
+          "name": "Pre-Cut Shampoo",
+          "price": 10,
+          "minutes": 10,
+          "note": "Book before your barber appointment"
+        },
+        {
+          "name": "Post-Cut Shampoo",
+          "price": 15,
+          "minutes": 15,
+          "note": "Book after your barber appointment"
+        },
+        {
+          "name": "Scalp Massage",
+          "price": 45,
+          "minutes": 45,
+          "note": "Shampoo, conditioning and essential oils"
         }
       ]
     }

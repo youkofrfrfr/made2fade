@@ -57,6 +57,9 @@ export function cutsFor(shop, id) {
   return mixedCuts(shop, Math.max(...shop.barbers.map(b => b.cuts.length)));
 }
 
+// Small tag for anyone who isn't a barber, e.g. "Braider"
+export const roleTag = b => (b.role ? ` <span class="role-tag">${esc(b.role)}</span>` : '');
+
 export function ratingHtml(b) {
   return b.reviewCount
     ? `<span class="team-rating"><b>★ ${b.rating.toFixed(1)}</b> (${b.reviewCount} reviews)</span>`
@@ -80,7 +83,7 @@ export function barberCard(shop, b) {
   return `<article class="team-card reveal">
     <a class="team-media" href="${profileUrl(b)}" aria-label="${esc(b.name)} details">${mediaHtml(b)}</a>
     <div class="team-body">
-      <h3>${esc(b.name)}</h3>
+      <h3>${esc(b.name)}${roleTag(b)}</h3>
       ${b.nickname ? `<div class="team-nick">"${esc(b.nickname)}"</div>` : ''}
       <div class="team-title">${esc(b.title)}</div>
       ${ratingHtml(b)}
