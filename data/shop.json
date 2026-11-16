@@ -66,12 +66,6 @@
       "text": "Great atmosphere whenever I'm using Cera's services."
     },
     {
-      "name": "Chudi M.",
-      "stars": 5,
-      "date": "2026-11-12",
-      "barber": "tony"
-    },
-    {
       "name": "Donnette",
       "stars": 5,
       "date": "2026-11-12",
@@ -84,6 +78,12 @@
       "date": "2026-11-12",
       "barber": "cera",
       "text": "She's been reliable when it comes to booking appointments"
+    },
+    {
+      "name": "Chudi M.",
+      "stars": 5,
+      "date": "2026-11-12",
+      "barber": "tony"
     },
     {
       "name": "Flaco",
@@ -740,7 +740,7 @@
       "title": "Braider · Loc Specialist",
       "photo": "/assets/barbers/cera.jpg",
       "bio": "Creative braids, cornrows, knotless, twists and loc care for kids and adults. Clients have trusted her with their hair for over 20 years.",
-      "rating": 5.0,
+      "rating": 5,
       "reviewCount": 7,
       "phone": "(202) 553-6355",
       "booking": "https://booksy.com/en-us/1897364_cera-flair-addi_braids-locs_105804_stafford",
