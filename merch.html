@@ -32,7 +32,7 @@
         <strong>How to buy</strong>
         <ol>
           <li>Pick what you want below.</li>
-          <li>Tap <b>DM</b>, <b>Text</b> or <b>Call</b> and tell us the item and your size.</li>
+          <li>Tap <b>Get This</b>, then DM, text or call us with your size.</li>
           <li>We'll get back to you with the price and when to pick it up.</li>
         </ol>
       </div>
@@ -48,6 +48,20 @@
     </div>
   </section>
 </main>
+
+<dialog class="order-sheet" id="orderSheet" aria-labelledby="orderName">
+  <button type="button" class="order-close" id="orderClose" aria-label="Close">&times;</button>
+  <div class="order-item">
+    <img id="orderImg" src="" alt="">
+    <div>
+      <span class="merch-type">Get yours</span>
+      <h3 id="orderName"></h3>
+      <p class="merch-color" id="orderColor"></p>
+    </div>
+  </div>
+  <p class="order-note">Message us for the price, your size and pickup.</p>
+  <div class="merch-actions" id="orderActions"></div>
+</dialog>
 
 </body>
 </html>

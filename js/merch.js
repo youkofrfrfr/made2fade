@@ -1,5 +1,5 @@
-// /merch: shop hoodies and tees. Nothing is sold online; each item links to an
-// Instagram DM, a text (with the item filled in) or a call.
+// /merch: shop hoodies and tees. Nothing is sold online; each item has one "Get This"
+// button that opens a small sheet with an Instagram DM, a text (with the item filled in) or a call.
 import { loadShop } from './shop.js';
 import { $, $$, esc, tel, fillShopLinks } from './ui.js';
 import { mountLayout } from './layout.js';
@@ -25,8 +25,11 @@ function actionsHtml(shop, message) {
     <a class="btn btn-ghost" href="${tel(shop.phone)}">${icon.call}<span>Call</span></a>`;
 }
 
-function itemHtml(shop, m) {
-  const label = `${m.name} (${m.color.replace(' · ', '/')})`;
+const labelFor = m => `${m.name} (${m.color.replace(' · ', '/')})`;
+const askFor = m => `Hi Made2Fade! I'm interested in the ${labelFor(m)}. What sizes and prices do you have?`;
+
+function itemHtml(m) {
+  const label = labelFor(m);
   const thumbs = m.images.length > 1
     ? `<div class="merch-thumbs">${m.images.map((src, i) => `
         <button type="button" data-src="${src}" aria-label="Photo ${i + 1}"${i ? '' : ' aria-current="true"'}><img src="${src}" alt="" loading="lazy"></button>`).join('')}</div>`
@@ -40,7 +43,7 @@ function itemHtml(shop, m) {
         <h3>${esc(m.name)}</h3>
         <p class="merch-color">${esc(m.color)}</p>
         <p class="merch-price">Price &amp; sizes: message us</p>
-        <div class="merch-actions">${actionsHtml(shop, `Hi Made2Fade! I'm interested in the ${label}. What sizes and prices do you have?`)}</div>
+        <button type="button" class="btn btn-gold merch-get" data-id="${m.id}">Get This</button>
       </div>
     </article>`;
 }
@@ -48,7 +51,8 @@ function itemHtml(shop, m) {
 try {
   const shop = await loadShop();
   fillShopLinks(shop);
-  $('#merchGrid').innerHTML = (shop.merch || []).map(m => itemHtml(shop, m)).join('');
+  const merch = shop.merch || [];
+  $('#merchGrid').innerHTML = merch.map(itemHtml).join('');
   $('#merchContact').innerHTML = actionsHtml(shop, "Hi Made2Fade! I have a question about your merch.");
 
   // Swap the big photo when a thumbnail is tapped
@@ -58,6 +62,20 @@ try {
     card.querySelectorAll('.merch-thumbs button').forEach(b => b.removeAttribute('aria-current'));
     btn.setAttribute('aria-current', 'true');
   }));
+
+  // "Get This" opens the order sheet for that item
+  const sheet = $('#orderSheet');
+  $$('.merch-get').forEach(btn => btn.addEventListener('click', () => {
+    const m = merch.find(x => x.id === btn.dataset.id);
+    $('#orderImg').src = m.images[0];
+    $('#orderName').textContent = m.name;
+    $('#orderColor').textContent = m.color;
+    $('#orderActions').innerHTML = actionsHtml(shop, askFor(m));
+    sheet.showModal();
+  }));
+  $('#orderClose').addEventListener('click', () => sheet.close());
+  // Tapping the dark area outside the sheet closes it
+  sheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });
 
   // Reveal right away; these cards are the whole page
   requestAnimationFrame(() => $$('.merch-card').forEach(el => el.classList.add('in')));
