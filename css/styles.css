@@ -623,3 +623,31 @@ footer .social a:hover { background: rgba(212,175,55,.12); }
 }
 .strip-item .role-tag { margin: 0; }
 .role-tag.big { margin: 0 0 6px; font-size: .68rem; padding: 3px 12px; }
+
+/* Merch */
+.page-hero.center p a { color: var(--gold-light); white-space: nowrap; }
+.merch-how { max-width: 720px; margin: 0 auto 34px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--ink); }
+.merch-how strong { font-family: 'Cinzel', serif; color: var(--gold-light); letter-spacing: .08em; }
+.merch-how ol { margin: 8px 0 0; padding-left: 20px; color: var(--muted); line-height: 1.8; font-size: .92rem; }
+.merch-how b { color: var(--text); }
+.merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+.merch-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--ink); }
+.merch-photo { aspect-ratio: 4 / 5; background: #000; }
+.merch-photo img { width: 100%; height: 100%; object-fit: cover; }
+.merch-thumbs { display: flex; gap: 8px; padding: 10px 16px 0; }
+.merch-thumbs button { width: 48px; height: 60px; padding: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #000; cursor: pointer; opacity: .6; }
+.merch-thumbs button[aria-current] { border-color: var(--gold); opacity: 1; }
+.merch-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.merch-info { display: flex; flex-direction: column; flex: 1; padding: 16px; }
+.merch-type { font-size: .66rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.merch-info h3 { margin: 4px 0 2px; font-size: 1.2rem; }
+.merch-color { color: var(--muted); font-size: .85rem; margin: 0; }
+.merch-price { color: var(--gold-light); font-size: .82rem; margin: 10px 0 14px; }
+.merch-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: auto; }
+.merch-actions .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 6px; font-size: .72rem; letter-spacing: .08em; }
+.merch-actions.big { max-width: 480px; margin: 22px auto 0; }
+.merch-actions.big .btn { padding: 14px 10px; font-size: .8rem; }
+.merch-contact p { color: var(--muted); }
+@media (max-width: 600px) {
+  .merch-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}

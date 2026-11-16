@@ -7,6 +7,7 @@ const PAGES = [
   { id: 'services', href: '/services.html', label: 'Prices' },
   { id: 'reviews', href: '/reviews.html', label: 'Reviews' },
   { id: 'visit', href: '/visit.html', label: 'Visit' },
+  { id: 'merch', href: '/merch.html', label: 'Merch' },
   { id: 'app', href: '/app.html', label: 'Get the App' },
 ];
 

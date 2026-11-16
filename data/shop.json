@@ -41,7 +41,8 @@
     "reviews": "https://app.thecut.co/barbers/tonyfuller",
     "instagram": "https://www.instagram.com/made2fade_llc",
     "appStore": "https://apps.apple.com/us/app/thecut-find-book-barbers/id1101408626",
-    "googlePlay": "https://play.google.com/store/apps/details?id=com.thecut.mobile.android.thecut"
+    "googlePlay": "https://play.google.com/store/apps/details?id=com.thecut.mobile.android.thecut",
+    "instagramDm": "https://ig.me/m/made2fade_llc"
   },
   "reviews": [
     {
@@ -914,6 +915,45 @@
           "minutes": 45,
           "note": "Shampoo, conditioning and essential oils"
         }
+      ]
+    }
+  ],
+  "merch": [
+    {
+      "id": "logo-hoodie",
+      "name": "Made2Fade Logo Hoodie",
+      "color": "Black · Royal Blue",
+      "type": "Hoodie",
+      "images": [
+        "/assets/merch/logo-hoodie-1.jpg",
+        "/assets/merch/logo-hoodie-2.jpg"
+      ]
+    },
+    {
+      "id": "stay-sharp-hoodie",
+      "name": "Stay Sharp Hoodie",
+      "color": "Heather Grey · Red",
+      "type": "Hoodie",
+      "images": [
+        "/assets/merch/stay-sharp-hoodie.jpg"
+      ]
+    },
+    {
+      "id": "stay-sharp-tee-black",
+      "name": "Stay Sharp Tee",
+      "color": "Black · White",
+      "type": "T-Shirt",
+      "images": [
+        "/assets/merch/stay-sharp-tee-black.jpg"
+      ]
+    },
+    {
+      "id": "stay-sharp-tee-white",
+      "name": "Stay Sharp Tee",
+      "color": "White · Neon",
+      "type": "T-Shirt",
+      "images": [
+        "/assets/merch/stay-sharp-tee-white.jpg"
       ]
     }
   ]
