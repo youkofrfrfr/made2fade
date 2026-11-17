@@ -46,6 +46,18 @@
   },
   "reviews": [
     {
+      "name": "Anna",
+      "stars": 5,
+      "date": "2026-11-17",
+      "barber": "tony"
+    },
+    {
+      "name": "Shaheed S.",
+      "stars": 5,
+      "date": "2026-11-17",
+      "barber": "tony"
+    },
+    {
       "name": "Booker W.",
       "stars": 5,
       "date": "2026-11-15",
@@ -90,18 +102,6 @@
       "name": "Flaco",
       "stars": 5,
       "date": "2026-11-09",
-      "barber": "tony"
-    },
-    {
-      "name": "Shan W.",
-      "stars": 5,
-      "date": "2026-11-08",
-      "barber": "tony"
-    },
-    {
-      "name": "Dwight W.",
-      "stars": 5,
-      "date": "2026-11-08",
       "barber": "tony"
     },
     {
@@ -207,7 +207,7 @@
       "photo": "/assets/barbers/tony.jpg",
       "bio": "Where precision, professionalism and consistency come first. Clean fades, sharp lineups, full transformations and scalp micropigmentation.",
       "rating": 5,
-      "reviewCount": 239,
+      "reviewCount": 241,
       "booking": "https://book.thecut.co/tonyfuller",
       "bookingLabel": "theCut",
       "social": {
